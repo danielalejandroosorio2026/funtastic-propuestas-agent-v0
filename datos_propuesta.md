@@ -1,1 +1,151 @@
-m´ÎàßΩ©bu™‡∫gßµ÷≠¢ k¢õû≤÷¶uKÅÊ⁄±Ó∏ÿ[ûÈ¢äw‚ïÍ(∫◊‚ïÊ€≠Ê§n∑öëÈ‹°◊ù¢Îi∫€©ä{hñ)ﬁ≤áÂzx-Ü{¶◊^rá^uÁ(uËß¶ÎaÖÈiv+)ï¨≠Ü+&zÀÅË¢ûõ≠äznµ¯•y◊üjÈm~äÏµÿß¢ã≠¶Îh∫⁄nµ¯•y◊üjÈm~äÏµ⁄.
+# Datos comerciales para propuestas
+
+> **Estado:** plantilla pendiente de completar y validar por el equipo de Funtastic Playroom.
+>
+> Reemplazar todos los textos entre `[CORCHETES]`. No utilizar esta informaci√≥n con clientes hasta completar la revisi√≥n comercial.
+
+## Control de versi√≥n
+
+- √öltima actualizaci√≥n: `[DD/MM/AAAA]`
+- Responsable: `[NOMBRE Y ROL]`
+- Moneda: `[ARS / USD / OTRA]`
+- Vigencia de precios: `[DESDE - HASTA]`
+
+## Paquetes
+
+Copiar este bloque por cada paquete disponible.
+
+### Paquete 1 ‚Äî `[NOMBRE DEL PAQUETE]`
+
+- Descripci√≥n breve: `[DESCRIPCI√ìN COMERCIAL]`
+- Recomendado para: `[TIPO DE FESTEJO / EDADES / NECESIDAD]`
+- Duraci√≥n: `[CANTIDAD DE HORAS]`
+- Capacidad incluida:
+  - Ni√±os: `[CANTIDAD]`
+  - Adultos: `[CANTIDAD]`
+- Incluye:
+  - `[INCLUSI√ìN 1]`
+  - `[INCLUSI√ìN 2]`
+  - `[INCLUSI√ìN 3]`
+- No incluye: `[DETALLE]`
+- Precio base: `[MONEDA E IMPORTE]`
+- Invitado adicional: `[CONDICI√ìN Y PRECIO]`
+- D√≠as y horarios disponibles: `[DETALLE]`
+- Restricciones: `[DETALLE]`
+- Observaciones: `[DETALLE]`
+
+### Paquete 2 ‚Äî `[NOMBRE DEL PAQUETE]`
+
+- Descripci√≥n breve: `[DESCRIPCI√ìN COMERCIAL]`
+- Recomendado para: `[TIPO DE FESTEJO / EDADES / NECESIDAD]`
+- Duraci√≥n: `[CANTIDAD DE HORAS]`
+- Capacidad incluida:
+  - Ni√±os: `[CANTIDAD]`
+  - Adultos: `[CANTIDAD]`
+- Incluye:
+  - `[INCLUSI√ìN 1]`
+  - `[INCLUSI√ìN 2]`
+  - `[INCLUSI√ìN 3]`
+- No incluye: `[DETALLE]`
+- Precio base: `[MONEDA E IMPORTE]`
+- Invitado adicional: `[CONDICI√ìN Y PRECIO]`
+- D√≠as y horarios disponibles: `[DETALLE]`
+- Restricciones: `[DETALLE]`
+- Observaciones: `[DETALLE]`
+
+## Adicionales
+
+Copiar una fila por cada adicional.
+
+| Adicional | Descripci√≥n | Precio | Recomendado para | Restricciones |
+|---|---|---:|---|---|
+| `[NOMBRE]` | `[QU√â INCLUYE]` | `[IMPORTE]` | `[CASO DE USO]` | `[DETALLE]` |
+| `[NOMBRE]` | `[QU√â INCLUYE]` | `[IMPORTE]` | `[CASO DE USO]` | `[DETALLE]` |
+| `[NOMBRE]` | `[QU√â INCLUYE]` | `[IMPORTE]` | `[CASO DE USO]` | `[DETALLE]` |
+
+## Tem√°ticas
+
+- Tem√°ticas incluidas: `[LISTA O NO APLICA]`
+- Tem√°ticas con costo adicional: `[LISTA Y PRECIO]`
+- Personalizaci√≥n permitida: `[DETALLE]`
+- Elementos que puede traer la familia: `[DETALLE]`
+- Restricciones de decoraci√≥n: `[DETALLE]`
+
+## Condiciones de reserva
+
+- Se√±a requerida: `[PORCENTAJE O IMPORTE]`
+- Medio de pago: `[OPCIONES]`
+- Plazo para confirmar: `[PLAZO]`
+- Pol√≠tica de cancelaci√≥n: `[DETALLE]`
+- Pol√≠tica de reprogramaci√≥n: `[DETALLE]`
+- Vigencia de la propuesta: `[CANTIDAD DE D√çAS]`
+- Confirmaci√≥n de disponibilidad: `[PROCEDIMIENTO]`
+- Ajustes de cantidad de invitados: `[PLAZO Y CONDICIONES]`
+- Horas extra: `[CONDICIONES Y PRECIO]`
+- Otros t√©rminos: `[DETALLE]`
+
+## Informaci√≥n operativa
+
+- Direcci√≥n: `[DIRECCI√ìN COMPLETA]`
+- Horarios de atenci√≥n comercial: `[D√çAS Y HORARIOS]`
+- Tiempo de anticipaci√≥n para llegar: `[MINUTOS]`
+- Estacionamiento: `[INFORMACI√ìN]`
+- Accesibilidad: `[INFORMACI√ìN]`
+- Pol√≠tica de alimentos externos: `[DETALLE]`
+- Manejo de alergias y restricciones alimentarias: `[PROCEDIMIENTO]`
+- Contacto para confirmaciones: `[NOMBRE / CANAL]`
+
+## Preguntas frecuentes
+
+### ¬øC√≥mo se reserva una fecha?
+
+`[RESPUESTA APROBADA]`
+
+### ¬øLa fecha consultada est√° disponible?
+
+`[RESPUESTA APROBADA. RECORDAR QUE EL AGENTE NO DEBE CONFIRMARLA SIN VALIDACI√ìN.]`
+
+### ¬øQu√© incluye el paquete?
+
+`[RESPUESTA GENERAL O INDICACI√ìN DE QUE DEPENDE DEL PAQUETE]`
+
+### ¬øSe puede personalizar la propuesta?
+
+`[RESPUESTA APROBADA]`
+
+### ¬øPueden asistir m√°s invitados que los incluidos?
+
+`[RESPUESTA APROBADA]`
+
+### ¬øSe puede llevar comida, torta o decoraci√≥n?
+
+`[RESPUESTA APROBADA]`
+
+### ¬øQu√© sucede si debemos cancelar o cambiar la fecha?
+
+`[RESPUESTA APROBADA]`
+
+### ¬øQu√© medios de pago aceptan?
+
+`[RESPUESTA APROBADA]`
+
+### ¬øC√≥mo trabajan con alergias o necesidades especiales?
+
+`[RESPUESTA APROBADA]`
+
+### `[OTRA PREGUNTA FRECUENTE]`
+
+`[RESPUESTA APROBADA]`
+
+## Mensajes o aclaraciones obligatorias
+
+- `[ACLARACI√ìN QUE DEBE APARECER EN TODA PROPUESTA]`
+- `[ACLARACI√ìN LEGAL O COMERCIAL]`
+- `[OTRA ACLARACI√ìN]`
+
+## Informaci√≥n que el agente nunca debe prometer
+
+- Disponibilidad sin validar.
+- Descuentos no autorizados.
+- Servicios que no figuren en este documento.
+- `[OTRA RESTRICCI√ìN INTERNA]`
