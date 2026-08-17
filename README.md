@@ -1,5 +1,17 @@
 # Asistente Comercial Funtastic Playroom
 
+## Agente GPT personalizado
+
+Este proyecto se complementa con un GPT personalizado creado en ChatGPT:
+
+**Asistente Comercial Funtastic**
+
+El agente utiliza como base las instrucciones comerciales, la información de paquetes, adicionales, condiciones y preguntas frecuentes documentadas en este repositorio.
+
+En esta primera versión, la vinculación entre GitHub y el GPT es manual: GitHub funciona como repositorio maestro del proyecto y ChatGPT funciona como entorno operativo del agente.
+
+Link del GPT: https://chatgpt.com/g/g-6a830bc3c9988191957cee988d00db8e-asistente-comercial-funtastic-v0
+
 ## Objetivo del proyecto
 
 Este proyecto propone una primera versión de un asistente comercial para **Funtastic Playroom**, orientado a la preparación de propuestas personalizadas para cumpleaños infantiles.
