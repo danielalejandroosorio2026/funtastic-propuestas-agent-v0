@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Solicitud de propuesta para cumpleaños infantiles en Funtastic Playroom.">
+    <title>Tu festejo en Funtastic</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__decoration hero__decoration--one" aria-hidden="true"></div>
+      <div class="hero__decoration hero__decoration--two" aria-hidden="true"></div>
+      <div class="hero__content">
+        <span class="eyebrow">Funtastic Playroom</span>
+        <h1>¡Armemos un cumple inolvidable!</h1>
+        <p>Contanos cómo imaginás el festejo y prepararemos una propuesta pensada para ustedes.</p>
+      </div>
+    </header>
+
+    <main>
+      <form class="event-form" action="#" method="post">
+        <p class="form-note"><span aria-hidden="true">✦</span> Los campos con * son obligatorios.</p>
+
+        <section class="form-card" aria-labelledby="contact-title">
+          <div class="section-heading">
+            <span class="section-icon" aria-hidden="true">👋</span>
+            <div>
+              <p class="step">Paso 1</p>
+              <h2 id="contact-title">Datos de contacto</h2>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="adult-name">Nombre del adulto *</label>
+              <input id="adult-name" name="adult_name" type="text" autocomplete="name" placeholder="Ej.: María González" required>
+            </div>
+
+            <div class="field">
+              <label for="whatsapp">WhatsApp *</label>
+              <input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" placeholder="Ej.: +54 9 11 1234 5678" required>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-card" aria-labelledby="birthday-title">
+          <div class="section-heading">
+            <span class="section-icon section-icon--yellow" aria-hidden="true">🎂</span>
+            <div>
+              <p class="step">Paso 2</p>
+              <h2 id="birthday-title">Sobre el cumple</h2>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="field field--wide-mobile">
+              <label for="child-name">Nombre del cumpleañero/a *</label>
+              <input id="child-name" name="child_name" type="text" placeholder="¿Cómo se llama?" required>
+            </div>
+
+            <div class="field">
+              <label for="age">Edad que cumple *</label>
+              <input id="age" name="age" type="number" inputmode="numeric" min="1" max="18" placeholder="Ej.: 7" required>
+            </div>
+
+            <div class="field">
+              <label for="date">Fecha preferida *</label>
+              <input id="date" name="date" type="date" required>
+            </div>
+
+            <div class="field">
+              <label for="time">Horario preferido *</label>
+              <input id="time" name="time" type="time" required>
+            </div>
+
+            <div class="field">
+              <label for="children-count">Cantidad de niños *</label>
+              <input id="children-count" name="children_count" type="number" inputmode="numeric" min="1" placeholder="Ej.: 20" required>
+            </div>
+
+            <div class="field">
+              <label for="adults-count">Cantidad de adultos *</label>
+              <input id="adults-count" name="adults_count" type="number" inputmode="numeric" min="0" placeholder="Ej.: 25" required>
+            </div>
+
+            <div class="field field--full">
+              <label for="theme">Temática</label>
+              <input id="theme" name="theme" type="text" placeholder="Ej.: dinosaurios, princesas, espacio...">
+            </div>
+          </div>
+        </section>
+
+        <section class="form-card" aria-labelledby="proposal-title">
+          <div class="section-heading">
+            <span class="section-icon section-icon--mint" aria-hidden="true">✨</span>
+            <div>
+              <p class="step">Paso 3</p>
+              <h2 id="proposal-title">La propuesta ideal</h2>
+            </div>
+          </div>
+
+          <fieldset class="choice-group">
+            <legend>¿Qué tipo de propuesta buscás? *</legend>
+            <div class="radio-cards">
+              <label class="choice-card">
+                <input type="radio" name="proposal_type" value="esencial" required>
+                <span><strong>Esencial</strong><small>Una opción simple y práctica</small></span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="proposal_type" value="personalizada">
+                <span><strong>Personalizada</strong><small>Con detalles a medida</small></span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="proposal_type" value="premium">
+                <span><strong>Premium</strong><small>Una experiencia completa</small></span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="proposal_type" value="asesoramiento">
+                <span><strong>Necesito ayuda</strong><small>Quiero una recomendación</small></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="choice-group">
+            <legend>Adicionales de interés</legend>
+            <p class="helper">Podés elegir más de uno.</p>
+            <div class="checkbox-grid">
+              <label class="check-option"><input type="checkbox" name="extras" value="decoracion"><span>Decoración temática</span></label>
+              <label class="check-option"><input type="checkbox" name="extras" value="mesa-dulce"><span>Mesa dulce</span></label>
+              <label class="check-option"><input type="checkbox" name="extras" value="animacion"><span>Animación especial</span></label>
+              <label class="check-option"><input type="checkbox" name="extras" value="fotografia"><span>Fotografía</span></label>
+              <label class="check-option"><input type="checkbox" name="extras" value="catering"><span>Catering para adultos</span></label>
+              <label class="check-option"><input type="checkbox" name="extras" value="souvenirs"><span>Souvenirs</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="comments">Comentarios</label>
+            <textarea id="comments" name="comments" rows="5" placeholder="Contanos cualquier idea, necesidad especial o consulta que debamos tener en cuenta."></textarea>
+          </div>
+        </section>
+
+        <div class="form-actions">
+          <p>Revisaremos la información antes de confirmar disponibilidad y condiciones.</p>
+          <button type="submit">Solicitar mi propuesta <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+    </main>
+
+    <footer>
+      <p>Hecho con <span aria-label="amor">♥</span> para festejos Funtastic</p>
+    </footer>
+  </body>
+</html>
