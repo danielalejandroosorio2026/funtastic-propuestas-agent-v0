@@ -2,17 +2,13 @@
 
 ## Qué construí
 
-Construí una primera versión de un agente comercial para **Funtastic Playroom**, un salón infantil con cafetería y propuestas de cumpleaños.
+Construí una primera versión de un agente comercial para **Funtastic Playroom**, un salón infantil con cafetería y propuestas de cumpleaños. El agente ayuda al equipo a generar propuestas personalizadas a partir de los datos de cada familia y de la propuesta comercial existente.
 
-El agente sirve para ayudar al equipo del salón a generar propuestas comerciales personalizadas a partir de paquetes estándar: **Básica, Completa y Saludable**.
+La propuesta real ya está documentada en el PDF del salón, que contiene los paquetes, adicionales, condiciones de reserva y preguntas frecuentes. Este proyecto no busca reemplazar ese documento, sino utilizarlo como base comercial para orientar las recomendaciones del agente.
 
-También permite sugerir adicionales, responder preguntas frecuentes y preparar mensajes listos para enviar por WhatsApp.
+También construí un formulario web simple para relevar los datos necesarios del cliente. El formulario no intenta explicar toda la propuesta ni incluir toda la letra chica: su función es ordenar la consulta inicial de la familia.
 
-Está pensado para reducir tareas repetitivas, ordenar la información comercial y mejorar la velocidad de respuesta a las familias.
-
-En esta primera versión, la vinculación entre GitHub y el GPT es manual: **GitHub funciona como repositorio maestro del proyecto** y **ChatGPT funciona como entorno operativo del agente**.
-
----
+En esta primera versión, la vinculación entre GitHub y el GPT es manual: **GitHub funciona como repositorio maestro del proyecto y ChatGPT funciona como entorno operativo del agente**.
 
 ## Cómo se lo pedí
 
@@ -80,119 +76,60 @@ Funciones principales:
 8. Detectar datos faltantes antes de armar una propuesta definitiva.
 ```
 
----
-
 ## Qué funciona
 
-Se creó el repositorio público en GitHub y se cargó una estructura inicial del proyecto.
+El repositorio está creado y el README documenta el proceso de construcción y prueba. También existen los archivos base `instrucciones_agente.md`, `datos_propuesta.md`, `formulario/index.html` y `formulario/styles.css`.
 
-El repositorio contiene estos archivos:
+El formulario HTML/CSS funciona como una demostración visual y permite relevar nombre del adulto, WhatsApp, datos del cumpleañero, fecha, horario, invitados, temática, tipo de propuesta, adicionales de interés y comentarios. Se mantuvo breve a propósito y no contiene toda la información comercial.
 
-```text
-.
-├── README.md
-├── instrucciones_agente.md
-├── datos_propuesta.md
-└── formulario/
-    ├── index.html
-    └── styles.css
-```
+El GPT personalizado **Asistente Comercial Funtastic** fue creado y probado con un caso simulado de un cumpleaños de 6 años, temática de princesas, con 25 niños y 25 adultos. Para una familia que quería resolver todo sin ocuparse demasiado, recomendó la **Opción Completa**, sugirió adicionales coherentes y generó un mensaje de WhatsApp utilizable.
 
-También se creó un formulario web inicial en HTML/CSS. El formulario releva datos básicos del cumpleaños, como nombre del adulto, WhatsApp, nombre del cumpleañero/a, edad, fecha, horario, cantidad de niños, cantidad de adultos, temática, tipo de propuesta deseada, adicionales de interés y comentarios.
+En esa prueba, el agente respetó límites importantes: no inventó precios, no confirmó disponibilidad de fecha y no confirmó una reserva sin seña.
 
-El proyecto no incluye todavía JavaScript, backend, base de datos ni integración automática. Por ahora el formulario funciona como una demostración visual del proceso.
-
-Además, se creó una primera versión del GPT personalizado llamado **Asistente Comercial Funtastic** dentro de ChatGPT.
-
-Se probó el agente con un caso simulado:
-
-```text
-Tengo una consulta para un cumpleaños de 6 años, temática princesas, con 25 niños y 25 adultos. La familia quiere resolver todo sin ocuparse demasiado. ¿Qué paquete recomendarías, qué adicionales sugerís y qué mensaje puedo mandar por WhatsApp?
-```
-
-La respuesta fue adecuada: el agente recomendó la **Opción Completa**, sugirió adicionales coherentes con la temática de princesas, como animación, ambientación temática, mesa dulce y fotografía/fotocabina, y generó un mensaje de WhatsApp usable.
-
-También respetó restricciones importantes: no inventó precios, no confirmó disponibilidad de fecha y no confirmó la reserva sin seña.
-
-El flujo pensado es:
+El flujo actual es manual y deliberadamente simple: el cliente completaría un formulario corto, el equipo revisaría la información y el agente ayudaría a recomendar una opción y redactar el mensaje. Esta simplicidad fue elegida para entender la herramienta antes de automatizar el proceso.
 
 ```text
 Cliente
    ↓
-Completa el formulario del cumpleaños
+Completa un formulario corto
    ↓
-El equipo recibe la información
+El equipo revisa la información
    ↓
 El agente interpreta la necesidad
    ↓
-Recomienda paquete y adicionales
+Recomienda una opción y adicionales
    ↓
 Genera un mensaje comercial
    ↓
 El equipo revisa, ajusta y envía
-   ↓
-El agente genera un resumen interno operativo
 ```
-
----
 
 ## Qué falta o qué falló
 
-La propuesta comercial real de Funtastic ya existe en el PDF cargado y contiene paquetes, adicionales, condiciones de reserva y preguntas frecuentes. En esta etapa, esa información fue trasladada también al repositorio en formato editable dentro de `datos_propuesta.md`, para facilitar mantenimiento, futuras automatizaciones y uso por el agente.
+La información comercial ya existe en el PDF de propuesta. Lo que falta es avanzar, en una etapa posterior, en una estructuración más completa y mantenible de esa información dentro del repositorio o en una fuente editable. Ya existe una primera versión estructurada en `datos_propuesta.md`, pero deberá mantenerse actualizada cuando cambie la propuesta comercial.
 
-Los precios no se incluyen en esta primera versión porque pueden cambiar. En una etapa futura podrían administrarse desde una fuente editable y vigente, como una planilla, un archivo de datos o un sistema interno.
+Los precios no se incluyen en esta primera versión porque pueden cambiar. En el futuro podrían administrarse desde una planilla, un archivo de datos o un sistema interno que funcione como fuente comercial vigente.
 
-El formulario web todavía es solamente visual. No guarda información, no envía mensajes, no está conectado con Google Sheets, CRM, WhatsApp ni con el GPT personalizado.
+El formulario todavía no guarda información y no está conectado con Google Sheets, un CRM, WhatsApp ni el GPT personalizado. Tampoco valida disponibilidad ni genera propuestas o archivos PDF automáticamente.
 
-También falta publicar el formulario usando GitHub Pages. El problema temporal de carga que apareció durante el trabajo ya se resolvió y los archivos se encuentran accesibles en el repositorio.
+Durante el trabajo, GitHub tuvo un problema temporal de carga, pero luego se resolvió y los archivos quedaron accesibles en el repositorio.
 
-El GPT fue creado y probado, pero actualmente no puede compartirse públicamente desde esta cuenta. En la pantalla de compartir solo aparecía la opción **“Solo yo”** y el mensaje:
+El GPT fue creado y probado, pero no pudo compartirse públicamente desde esta cuenta porque en la configuración solo aparece la opción **“Solo yo”**.
 
-```text
-Ya no se pueden compartir GPT con el público.
-```
-
-Todavía falta probar el agente con más casos reales o simulados, por ejemplo:
-
-- familias que buscan algo más económico;
-- familias que quieren llevar decoración propia;
-- cumpleaños con más invitados;
-- consultas sobre seña;
-- consultas sobre cancelación;
-- clientes indecisos entre Básica y Completa;
-- consultas por disponibilidad de fecha;
-- familias que quieren una propuesta saludable;
-- clientes que preguntan por torta, piñata o ingreso anticipado.
-
----
+También falta probar el agente con más casos reales o simulados: alternativas económicas, propuestas saludables, mayor cantidad de invitados, decoración propia, dudas sobre seña o cancelación y consultas por disponibilidad.
 
 ## Qué aprendí
 
-Aprendí que un agente no es solo “un chat que responde”, sino una combinación de instrucciones, datos, reglas, pruebas y flujo de trabajo.
+Aprendí que un agente no es solo un chat: necesita instrucciones claras, datos confiables, reglas comerciales y validación humana. Una respuesta bien redactada no es suficiente si la información de base no está ordenada o actualizada.
 
-También entendí que GitHub no es donde vive el agente, sino donde se documenta y ordena el proyecto: archivos, versiones, instrucciones, formulario y datos comerciales.
+También entendí que GitHub funciona como repositorio maestro y documental del proyecto, mientras que ChatGPT funciona como entorno operativo del agente. En esta versión, la conexión entre ambos es manual y permite revisar cada cambio antes de utilizarlo.
 
-El GPT personalizado funciona como entorno operativo para generar respuestas, mientras que GitHub funciona como repositorio maestro y evidencia del proceso.
+Decidí mantener esta primera versión simple para entender en detalle cómo se combinan GitHub, Codex, un GPT personalizado, archivos de conocimiento y un flujo comercial. La idea no es hacer la automatización completa desde el inicio, sino validar primero el proceso básico y luego complejizarlo con más información, integraciones y automatización.
 
-También comprobé que una buena instrucción no alcanza por sí sola: hay que probar el agente con casos reales, revisar si inventa información, ajustar reglas y validar el resultado antes de usarlo con clientes.
-
-Por último, entendí que conviene avanzar por etapas. Primero hay que ordenar el proceso comercial y crear una versión simple. Después se puede pensar en automatizaciones, integración con planillas, CRM, WhatsApp o generación automática de propuestas.
-
----
+Por último, comprendí que automatizar un proceso desordenado puede acelerar el desorden. Antes de conectar Google Sheets, CRM, WhatsApp, validación de disponibilidad o generación automática de propuestas y PDFs, conviene definir y probar bien el flujo comercial.
 
 ## Links
 
 - Repositorio GitHub: [funtastic-propuestas-agent-v0](https://github.com/danielalejandroosorio2026/funtastic-propuestas-agent-v0)
-- GPT personalizado: fue creado y probado en ChatGPT, pero actualmente no puede compartirse públicamente desde esta cuenta.
+- GPT personalizado: fue creado y probado, pero actualmente no puede compartirse públicamente desde esta cuenta.
 - Formulario web: pendiente de publicación con GitHub Pages.
-
----
-
-## Próximas etapas
-
-1. Mantener `datos_propuesta.md` actualizado cuando cambie la propuesta comercial del salón.
-2. Probar el agente con más casos comerciales.
-3. Ajustar las instrucciones del GPT según los errores detectados.
-4. Publicar el formulario con GitHub Pages y verificar su acceso público.
-5. Conectar el formulario con Google Sheets, CRM o una base de datos.
-6. Evaluar una integración futura con WhatsApp o generación automática de PDF.
