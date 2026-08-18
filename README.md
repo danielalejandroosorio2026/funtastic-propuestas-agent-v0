@@ -138,42 +138,19 @@ El agente genera un resumen interno operativo
 
 ## Qué falta o qué falló
 
-Todavía falta completar el archivo `datos_propuesta.md` con información comercial real y validada de Funtastic Playroom.
+La propuesta comercial real de Funtastic ya existe en el PDF cargado y contiene paquetes, adicionales, condiciones de reserva y preguntas frecuentes. En esta etapa, esa información fue trasladada también al repositorio en formato editable dentro de `datos_propuesta.md`, para facilitar mantenimiento, futuras automatizaciones y uso por el agente.
 
-Falta cargar o validar:
-
-- paquetes reales;
-- precios;
-- adicionales disponibles;
-- condiciones comerciales definitivas;
-- política de seña;
-- política de cancelación;
-- reglas sobre torta, decoración, piñata, ingreso previo y estacionamiento;
-- preguntas frecuentes actualizadas.
+Los precios no se incluyen en esta primera versión porque pueden cambiar. En una etapa futura podrían administrarse desde una fuente editable y vigente, como una planilla, un archivo de datos o un sistema interno.
 
 El formulario web todavía es solamente visual. No guarda información, no envía mensajes, no está conectado con Google Sheets, CRM, WhatsApp ni con el GPT personalizado.
 
-También falta publicar correctamente el formulario usando GitHub Pages. Durante el trabajo aparecieron errores temporales de carga en GitHub, por ejemplo:
+También falta publicar el formulario usando GitHub Pages. El problema temporal de carga que apareció durante el trabajo ya se resolvió y los archivos se encuentran accesibles en el repositorio.
 
-```text
-No server is currently available to service your request.
-```
-
-y luego:
-
-```text
-Error loading page. An unexpected error occurred. Try reloading the page.
-```
-
-Los archivos quedaron visibles en el repositorio, pero algunas pantallas de GitHub siguieron mostrando errores de carga.
-
-También apareció una limitación al intentar compartir públicamente el GPT personalizado. En la pantalla de compartir solo aparecía la opción **“Solo yo”** y el mensaje:
+El GPT fue creado y probado, pero actualmente no puede compartirse públicamente desde esta cuenta. En la pantalla de compartir solo aparecía la opción **“Solo yo”** y el mensaje:
 
 ```text
 Ya no se pueden compartir GPT con el público.
 ```
-
-Por eso, en esta primera versión, el GPT fue creado y probado en ChatGPT, pero no puede compartirse públicamente desde esta cuenta.
 
 Todavía falta probar el agente con más casos reales o simulados, por ejemplo:
 
@@ -213,9 +190,9 @@ Por último, entendí que conviene avanzar por etapas. Primero hay que ordenar e
 
 ## Próximas etapas
 
-1. Completar `datos_propuesta.md` con información real del salón.
+1. Mantener `datos_propuesta.md` actualizado cuando cambie la propuesta comercial del salón.
 2. Probar el agente con más casos comerciales.
 3. Ajustar las instrucciones del GPT según los errores detectados.
-4. Publicar el formulario con GitHub Pages cuando GitHub funcione correctamente.
+4. Publicar el formulario con GitHub Pages y verificar su acceso público.
 5. Conectar el formulario con Google Sheets, CRM o una base de datos.
 6. Evaluar una integración futura con WhatsApp o generación automática de PDF.
