@@ -2,7 +2,7 @@
 
 Sistema agéntico reproducible para preparar propuestas comerciales de cumpleaños infantiles a partir de una consulta estructurada y un catálogo validado.
 
-> Estado: la arquitectura y el runner están implementados. Los precios y casos incluidos siguen siendo demostrativos; deben reemplazarse por datos validados y tres consultas reales anonimizadas antes de la entrega final.
+> Estado: la arquitectura y el runner están implementados. Las tres entradas provienen de consultas comerciales reales reconstruidas y anonimizadas. Los precios continúan siendo demostrativos hasta validar el catálogo.
 
 ## Qué hace
 
@@ -79,7 +79,7 @@ python -m agent.runner --validate-only corridas/01-caso-normal/salida.json
 pytest -q
 ```
 
-Los tests validan las tres salidas, la aritmética, el caso riesgoso y el rechazo de adicionales inexistentes.
+Los tests validan las tres salidas, los datos faltantes, las recomendaciones, la aritmética y el rechazo de adicionales inexistentes.
 
 ## Resiliencia
 
@@ -99,13 +99,13 @@ Se usa una clave estable de caché y se registran tokens de entrada, tokens cach
 
 ## Corridas incluidas
 
-Las tres corridas actuales son demostraciones:
+Las tres entradas son consultas comerciales reales reconstruidas y anonimizadas:
 
-- normal;
-- límite de capacidad/presupuesto;
-- riesgosa con alergia e intento de prompt injection.
+- festejo conjunto entre cinco familias con información incompleta;
+- propuesta saludable con refuerzo de comida para adultos;
+- cumpleaños de mellizos con prioridad de bajo costo.
 
-No se presentan como casos reales. Deben reemplazarse antes de entregar.
+Las cotizaciones siguen identificadas como preliminares porque el catálogo todavía no fue validado.
 
 ## Supervisión
 
