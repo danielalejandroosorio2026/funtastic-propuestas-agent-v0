@@ -5,6 +5,7 @@
 - Privacidad: identificadores personales eliminados
 - Caso real: sí
 - Tipo de corrida: ejecución documental con Codex y conector de GitHub
-- Catálogo validado: no
-- Control aritmético: 180000
+- Servicios y políticas: verificados contra propuesta comercial v3
+- Precios disponibles: no
+- Control de política: mellizos sin costo adicional; un obsequio y una cochera garantizada
 - Tokens: el entorno no expone medición por corrida

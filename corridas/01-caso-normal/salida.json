@@ -17,12 +17,16 @@
     "moneda": "ARS",
     "catalogo_validado": false,
     "items": [],
+    "conceptos_pendientes": [
+      "Paquete Completa",
+      "Invitados adicionales"
+    ],
     "total_estimado": null
   },
   "alertas": [
     "No cotizar hasta conocer la cantidad total de niños",
     "Confirmar si festejan uno o varios niños",
-    "Catálogo y precios todavía no validados",
+    "Servicios verificados; precios no informados en la propuesta comercial",
     "Disponibilidad pendiente"
   ],
   "mensaje_whatsapp": "Hola. Para preparar una propuesta integral necesitamos confirmar cuántos niños participarían, si el festejo es para uno o varios cumpleañeros, y la fecha y horario preferidos. Con esos datos podremos recomendar la opción más adecuada para las cinco familias. La disponibilidad, los valores y las condiciones serán confirmados por el equipo.",
@@ -38,7 +42,7 @@
   "motivos_revision": [
     "Completar datos esenciales",
     "Validar capacidad",
-    "Validar catálogo y precios",
+    "Solicitar precios vigentes",
     "Confirmar disponibilidad"
   ]
 }

@@ -2,7 +2,7 @@
 
 Sistema agéntico reproducible para preparar propuestas comerciales de cumpleaños infantiles a partir de una consulta estructurada y un catálogo validado.
 
-> Estado: la arquitectura y el runner están implementados. Las tres entradas provienen de consultas comerciales reales reconstruidas y anonimizadas. Los precios continúan siendo demostrativos hasta validar el catálogo.
+> Estado: la arquitectura y el runner están implementados. Las tres entradas provienen de consultas comerciales reales reconstruidas y anonimizadas. Los servicios, capacidades y políticas fueron contrastados con la propuesta comercial v3. Como ese documento no contiene precios, el agente deja la cotización pendiente en vez de inventar importes.
 
 ## Qué hace
 
@@ -38,10 +38,10 @@ requirements.txt
 
 ## Herramientas reales
 
-- `read_business_file`: lee exclusivamente las cuatro fuentes autorizadas.
+- `read_business_file`: lee exclusivamente las cinco fuentes autorizadas.
 - `calculate_quote`: calcula paquete, excedentes y adicionales de forma determinística.
 
-Las herramientas usan schemas cerrados. El modelo no calcula precios por su cuenta.
+Las herramientas usan schemas cerrados. El modelo no calcula precios por su cuenta. Si la fuente no contiene un importe, devuelve el concepto pendiente y un total nulo.
 
 ## Instalación reproducible
 
@@ -79,7 +79,7 @@ python -m agent.runner --validate-only corridas/01-caso-normal/salida.json
 pytest -q
 ```
 
-Los tests validan las tres salidas, los datos faltantes, las recomendaciones, la aritmética y el rechazo de adicionales inexistentes.
+Los tests validan las tres salidas, los datos faltantes, las recomendaciones, la ausencia segura de precios, el límite de capacidad y el rechazo de adicionales inexistentes.
 
 ## Resiliencia
 
@@ -105,7 +105,7 @@ Las tres entradas son consultas comerciales reales reconstruidas y anonimizadas:
 - propuesta saludable con refuerzo de comida para adultos;
 - cumpleaños de mellizos con prioridad de bajo costo.
 
-Las cotizaciones siguen identificadas como preliminares porque el catálogo todavía no fue validado.
+Las inclusiones y políticas están verificadas. Las cotizaciones quedan pendientes porque la fuente comercial no contiene precios.
 
 ## Supervisión
 

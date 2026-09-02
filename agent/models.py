@@ -52,16 +52,19 @@ class Cotizacion(StrictModel):
     moneda: str = Field(pattern=r"^ARS$")
     catalogo_validado: bool
     items: list[ItemCotizacion]
+    conceptos_pendientes: list[str]
     total_estimado: float | None
 
     @model_validator(mode="after")
     def validar_total(self) -> "Cotizacion":
         suma = sum(item.subtotal for item in self.items)
         if self.total_estimado is None:
-            if self.items:
-                raise ValueError("total_estimado no puede ser null si hay ítems")
+            if not self.conceptos_pendientes:
+                raise ValueError("total_estimado null exige conceptos pendientes")
         elif not isclose(self.total_estimado, suma, rel_tol=0, abs_tol=0.01):
             raise ValueError(f"total inválido: {self.total_estimado} != {suma}")
+        elif self.conceptos_pendientes:
+            raise ValueError("no puede haber total si quedan conceptos pendientes")
         return self
 
 

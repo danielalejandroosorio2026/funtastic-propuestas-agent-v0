@@ -100,6 +100,7 @@
         "moneda",
         "catalogo_validado",
         "items",
+        "conceptos_pendientes",
         "total_estimado"
       ],
       "properties": {
@@ -144,6 +145,12 @@
               }
             },
             "additionalProperties": false
+          }
+        },
+        "conceptos_pendientes": {
+          "type": "array",
+          "items": {
+            "type": "string"
           }
         },
         "total_estimado": {

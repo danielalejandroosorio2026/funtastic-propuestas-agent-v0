@@ -6,7 +6,7 @@ Estas tres entradas fueron reconstruidas por el propietario a partir de consulta
 - 02: propuesta saludable para 25 niños y 25 adultos, con refuerzo de comida para adultos.
 - 03: cumpleaños de mellizos para 20 niños y 15 adultos, con prioridad de bajo costo.
 
-Las entradas son reales reconstruidas. Los precios de las salidas siguen siendo demostrativos porque el catálogo comercial todavía no fue validado.
+Las entradas son reales reconstruidas. Las inclusiones y políticas se verificaron contra la propuesta comercial v3. Como esa fuente no informa precios, las salidas no muestran importes y solicitan cotización humana.
 
 Cada salida conserva:
 

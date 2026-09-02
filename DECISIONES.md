@@ -20,9 +20,9 @@ Automatizar el envío agrega permisos y riesgo comercial. El agente produce un b
 
 La v0 concentraba reglas y datos en documentos generales. V2 separa catálogo, adicionales, políticas, preguntas frecuentes, prompts y esquema de salida.
 
-## D6 — Agregar cálculo trazable
+## D6 — Agregar cálculo trazable y detención segura
 
-Cada precio tiene fuente, cantidad, valor unitario y subtotal. El total debe coincidir con la suma. Esto facilita auditoría y evita números sin explicación.
+Cada precio disponible tiene fuente, cantidad, valor unitario y subtotal. El total debe coincidir con la suma. Si falta un importe, el agente devuelve total nulo y los conceptos pendientes. Esto facilita auditoría y evita números sin explicación.
 
 ## D7 — Tratar texto del cliente como no confiable
 
@@ -30,7 +30,7 @@ Se agregó una prueba con instrucciones maliciosas en comentarios. El agente deb
 
 ## D8 — No inventar evidencia real
 
-No contamos todavía con catálogo validado ni consultas reales anonimizadas. Las corridas se etiquetan como demostración y no se presentan como cumplimiento final.
+En la primera versión no se contaba con catálogo validado ni consultas reales anonimizadas. Después se incorporaron tres consultas reales reconstruidas y una propuesta comercial. Las corridas distinguen explícitamente entre datos verificados y precios ausentes.
 
 ## Próximas iteraciones reales
 
@@ -96,9 +96,24 @@ Esto mejora la honestidad de la evidencia: entradas reales, privacidad protegida
 Las pruebas originales describían escenarios inventados. Después de incorporar las consultas reales anonimizadas se reescribieron las aserciones para verificar:
 
 - detención por falta de cantidad de niños en el caso multifamilia;
-- recomendación Saludable y total preliminar trazable en el segundo caso;
+- recomendación Saludable y detención segura por falta de precios en el segundo caso;
 - recomendación Básica y prioridad de bajo costo en el cumpleaños de mellizos.
 
 Cambio técnico: commit [356a9f7](https://github.com/danielalejandroosorio2026/funtastic-propuestas-agent-v0/commit/356a9f79cc4b50eba06f7cabb5c45bec4e59dc21).
 
 Resultado verificado: 8 tests aprobados en 0,25 segundos.
+
+## D13 — Reemplazar datos demostrativos por la propuesta comercial v3
+
+Se revisaron visualmente las siete páginas del PDF comercial aportado por el propietario. La fuente confirma tres opciones, 2 horas y media, 25 niños y 25 adultos incluidos, capacidad máxima de 100 personas, servicios, adicionales, reserva del 30%, cancelación y preguntas frecuentes.
+
+El PDF no contiene precios. Por esa razón:
+
+- se eliminaron todos los importes inventados;
+- se agregó `datos/servicios_paquetes.md`;
+- el cálculo devuelve `total_estimado: null` y `conceptos_pendientes`;
+- se agregó un control de capacidad máxima;
+- se actualizaron las tres corridas con condiciones reales;
+- se recalibraron las pruebas.
+
+Resultado verificado: 9 tests aprobados en 0,20 segundos.

@@ -1,4 +1,4 @@
-catalogo_validado,nombre,descripcion,duracion_horas,ninos_incluidos,adultos_incluidos,precio_base_ars,precio_nino_excedente_ars,precio_adulto_excedente_ars,recomendado_para,vigencia_desde,vigencia_hasta
-false,Basica,Propuesta esencial con uso del salón y servicio base,2,20,20,180000,6000,3000,Familias que priorizan simplicidad y presupuesto,2026-09-01,2026-09-30
-false,Completa,Propuesta integral con mayor capacidad y acompañamiento,2.5,30,30,260000,5500,2500,Familias que quieren resolver la mayor parte del evento,2026-09-01,2026-09-30
-false,Saludable,Propuesta con selección alimentaria orientada a opciones saludables,2.5,25,25,290000,6000,3000,Familias que priorizan una propuesta alimentaria saludable,2026-09-01,2026-09-30
+contenido_validado,precios_disponibles,nombre,descripcion,duracion_horas,ninos_incluidos,adultos_incluidos,precio_base_ars,precio_nino_excedente_ars,precio_adulto_excedente_ars,recomendado_para,fuente
+true,false,Basica,Propuesta práctica para un cumpleaños sin vueltas,2.5,25,25,,,,Familias que prefieren ocuparse personalmente de los detalles del festejo,Propuesta comercial v3 página 2
+true,false,Completa,Propuesta completa para despreocuparse de todo,2.5,25,25,,,,Familias que quieren tener todo resuelto y disfrutar,Propuesta comercial v3 página 3
+true,false,Saludable,Propuesta fresca y natural,2.5,25,25,,,,Familias que cuidan la alimentación,Propuesta comercial v3 página 4

@@ -9,43 +9,39 @@
   ],
   "paquete_recomendado": {
     "nombre": "Basica",
-    "justificacion": "Coincide con la opción solicitada y con la prioridad de minimizar el gasto; la capacidad demostrativa cubre 20 niños y 15 adultos."
+    "justificacion": "Coincide con la opción solicitada y con la prioridad de minimizar el gasto; la capacidad verificada cubre 20 niños y 15 adultos."
   },
   "alternativa": null,
   "cotizacion": {
     "moneda": "ARS",
     "catalogo_validado": false,
-    "items": [
-      {
-        "concepto": "Paquete Basica",
-        "cantidad": 1,
-        "precio_unitario": 180000,
-        "subtotal": 180000,
-        "fuente": "datos/catalogo_paquetes.csv"
-      }
+    "items": [],
+    "conceptos_pendientes": [
+      "Paquete Basica"
     ],
-    "total_estimado": 180000
+    "total_estimado": null
   },
   "alertas": [
     "Confirmar que el paquete cubre la dinámica de un cumpleaños de mellizos",
-    "Precios de demostración no validados",
+    "La propuesta comercial no informa precios",
+    "Dos cumpleañeros no tienen costo adicional; el obsequio y la cochera garantizada corresponden a uno solo",
     "Disponibilidad pendiente"
   ],
-  "mensaje_whatsapp": "Hola. Para el cumpleaños de los mellizos, con 20 niños y 15 adultos, la opción Básica coincide preliminarmente con la intención de cuidar el presupuesto. El valor de demostración es ARS 180.000. Para completar la propuesta necesitamos saber la edad, fecha y horario. Los valores, inclusiones y disponibilidad serán confirmados por el equipo.",
+  "mensaje_whatsapp": "Hola. Para el cumpleaños de los mellizos, con 20 niños y 15 adultos, la opción Básica entra dentro de la capacidad incluida y coincide con la intención de cuidar el presupuesto. Festejar a dos cumpleañeros no tiene costo adicional; el obsequio y la cochera garantizada corresponden a uno solo. Para completar la propuesta necesitamos saber la edad, fecha y horario. El precio y la disponibilidad serán confirmados por el equipo.",
   "resumen_interno": {
     "tipo_evento": "Cumpleaños de mellizos",
     "ninos": 20,
     "adultos": 15,
     "prioridad": "Menor costo",
     "paquete": "Basica",
-    "total_preliminar_ars": 180000,
+    "total_preliminar_ars": null,
     "proximo_paso": "Solicitar edad, fecha y horario; validar inclusiones para mellizos"
   },
   "requiere_revision_humana": true,
   "motivos_revision": [
     "Completar edad, fecha y horario",
-    "Validar condiciones para mellizos",
-    "Validar catálogo y precios",
+    "Confirmar que la familia acepta la condición de un obsequio y una cochera garantizada",
+    "Solicitar precio vigente",
     "Confirmar disponibilidad"
   ]
 }

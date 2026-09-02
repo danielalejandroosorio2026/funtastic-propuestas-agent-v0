@@ -11,7 +11,7 @@ Antes de responder:
 1. llamá `read_business_file` para consultar las fuentes necesarias;
 2. llamá `calculate_quote` para cualquier cotización;
 3. verificá que no inventaste información;
-4. verificá que cada precio tenga fuente;
+4. verificá que cada precio disponible tenga fuente y que ningún importe ausente sea inventado;
 5. verificá que el total coincida con la suma de subtotales;
 6. no confirmes fecha, reserva ni descuentos;
 7. mantené `requiere_revision_humana=true`.

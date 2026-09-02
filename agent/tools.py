@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ALLOWED_FILES = {
     "datos/catalogo_paquetes.csv",
     "datos/adicionales.csv",
+    "datos/servicios_paquetes.md",
     "datos/politicas.md",
     "datos/preguntas_frecuentes.md",
 }
@@ -42,14 +43,21 @@ TOOLS = [
                     "items": {
                         "type": "string",
                         "enum": [
-                            "Decoracion tematica",
-                            "Mesa dulce",
+                            "Hora adicional",
+                            "Invitado adicional",
                             "Animacion especial",
                             "Fotografia",
-                            "Catering adultos",
+                            "Talleres",
+                            "Spa de niñas",
+                            "Mesa dulce tematica",
+                            "Ambientacion",
+                            "Foto cabina",
+                            "Helados",
+                            "Refuerzo comida adultos",
+                            "Torta",
                         ],
                     },
-                    "maxItems": 5,
+                    "maxItems": 12,
                 },
             },
             "required": ["package", "children", "adults", "extras"],
@@ -83,9 +91,15 @@ def calculate_quote(package: str, children: int, adults: int, extras: list[str])
 
     row = packages[package]
     items: list[dict[str, Any]] = []
+    pending: list[str] = []
 
-    def add(concepto: str, cantidad: int, unitario: int, fuente: str) -> None:
-        if cantidad > 0:
+    def add(concepto: str, cantidad: int, raw_price: str, fuente: str) -> None:
+        if cantidad <= 0:
+            return
+        if not raw_price.strip():
+            pending.append(concepto)
+        else:
+            unitario = int(raw_price)
             items.append(
                 {
                     "concepto": concepto,
@@ -96,27 +110,23 @@ def calculate_quote(package: str, children: int, adults: int, extras: list[str])
                 }
             )
 
-    add(f"Paquete {package}", 1, int(row["precio_base_ars"]), "datos/catalogo_paquetes.csv")
-    add(
-        "Niños excedentes",
-        max(0, children - int(row["ninos_incluidos"])),
-        int(row["precio_nino_excedente_ars"]),
-        "datos/catalogo_paquetes.csv",
-    )
-    add(
-        "Adultos excedentes",
-        max(0, adults - int(row["adultos_incluidos"])),
-        int(row["precio_adulto_excedente_ars"]),
-        "datos/catalogo_paquetes.csv",
-    )
+    if children + adults > 100:
+        raise ValueError("la cantidad total supera la capacidad máxima de 100 personas")
+
+    add(f"Paquete {package}", 1, row["precio_base_ars"], "datos/catalogo_paquetes.csv")
+    excess_children = max(0, children - int(row["ninos_incluidos"]))
+    excess_adults = max(0, adults - int(row["adultos_incluidos"]))
+    if excess_children or excess_adults:
+        add("Invitados adicionales", excess_children + excess_adults, "", "datos/adicionales.csv")
     for extra in extras:
-        add(extra, 1, int(additions[extra]["precio_ars"]), "datos/adicionales.csv")
+        add(extra, 1, additions[extra]["precio_ars"], "datos/adicionales.csv")
 
     return {
         "moneda": "ARS",
-        "catalogo_validado": row["catalogo_validado"].lower() == "true",
+        "catalogo_validado": row["precios_disponibles"].lower() == "true",
         "items": items,
-        "total_estimado": sum(item["subtotal"] for item in items),
+        "conceptos_pendientes": pending,
+        "total_estimado": None if pending else sum(item["subtotal"] for item in items),
     }
 
 

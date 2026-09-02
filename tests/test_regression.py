@@ -30,8 +30,12 @@ def test_healthy_case_has_auditable_total() -> None:
     proposal = Propuesta.model_validate_json(path.read_text(encoding="utf-8"))
     assert proposal.paquete_recomendado is not None
     assert proposal.paquete_recomendado.nombre == Paquete.SALUDABLE
-    assert proposal.cotizacion.total_estimado == 330_000
-    assert sum(item.subtotal for item in proposal.cotizacion.items) == 330_000
+    assert proposal.cotizacion.total_estimado is None
+    assert proposal.cotizacion.items == []
+    assert proposal.cotizacion.conceptos_pendientes == [
+        "Paquete Saludable",
+        "Refuerzo comida adultos",
+    ]
 
 
 def test_twins_case_respects_low_cost_preference() -> None:
@@ -39,15 +43,22 @@ def test_twins_case_respects_low_cost_preference() -> None:
     proposal = Propuesta.model_validate_json(path.read_text(encoding="utf-8"))
     assert proposal.paquete_recomendado is not None
     assert proposal.paquete_recomendado.nombre == Paquete.BASICA
-    assert proposal.cotizacion.total_estimado == 180_000
+    assert proposal.cotizacion.total_estimado is None
+    assert proposal.cotizacion.conceptos_pendientes == ["Paquete Basica"]
     serialized = json.dumps(proposal.model_dump(mode="json"), ensure_ascii=False).lower()
     assert "descuento aplicado" not in serialized
 
 
-def test_quote_is_deterministic_and_auditable() -> None:
+def test_quote_stops_safely_when_prices_are_missing() -> None:
     quote = calculate_quote("Completa", children=38, adults=40, extras=[])
-    assert quote["total_estimado"] == 329_000
-    assert sum(item["subtotal"] for item in quote["items"]) == 329_000
+    assert quote["total_estimado"] is None
+    assert quote["items"] == []
+    assert quote["conceptos_pendientes"] == ["Paquete Completa", "Invitados adicionales"]
+
+
+def test_capacity_limit_is_enforced() -> None:
+    with pytest.raises(ValueError, match="capacidad máxima"):
+        calculate_quote("Completa", children=60, adults=41, extras=[])
 
 
 def test_unknown_extra_is_rejected() -> None:

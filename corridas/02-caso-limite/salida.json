@@ -15,43 +15,32 @@
   "cotizacion": {
     "moneda": "ARS",
     "catalogo_validado": false,
-    "items": [
-      {
-        "concepto": "Paquete Saludable",
-        "cantidad": 1,
-        "precio_unitario": 290000,
-        "subtotal": 290000,
-        "fuente": "datos/catalogo_paquetes.csv"
-      },
-      {
-        "concepto": "Catering adultos",
-        "cantidad": 1,
-        "precio_unitario": 40000,
-        "subtotal": 40000,
-        "fuente": "datos/adicionales.csv"
-      }
+    "items": [],
+    "conceptos_pendientes": [
+      "Paquete Saludable",
+      "Refuerzo comida adultos"
     ],
-    "total_estimado": 330000
+    "total_estimado": null
   },
   "alertas": [
-    "Precios de demostración no validados",
+    "La propuesta comercial no informa precios",
     "Consultar alergias y restricciones alimentarias",
     "Disponibilidad pendiente"
   ],
-  "mensaje_whatsapp": "Hola. Por la cantidad de invitados y la preferencia informada, la opción Saludable con refuerzo de catering para adultos es una alternativa adecuada. El valor preliminar con datos de demostración es ARS 330.000. Para preparar el detalle final necesitamos conocer la edad, la fecha, el horario y si existen alergias o restricciones alimentarias. Los valores y la disponibilidad serán confirmados por el equipo.",
+  "mensaje_whatsapp": "Hola. Por la cantidad de invitados y la preferencia informada, la opción Saludable es adecuada y ya incluye comida para adultos: medialunas, medialunas con jamón y queso y una bandeja dulce. Podemos consultar además un refuerzo de comida. Para preparar el detalle final necesitamos conocer la edad, la fecha, el horario y si existen alergias o restricciones alimentarias. El precio y la disponibilidad serán confirmados por el equipo.",
   "resumen_interno": {
     "ninos": 25,
     "adultos": 25,
     "paquete": "Saludable",
-    "adicional": "Catering adultos",
-    "total_preliminar_ars": 330000,
+    "adicional": "Refuerzo comida adultos sujeto a cotización",
+    "total_preliminar_ars": null,
     "proximo_paso": "Solicitar edad, fecha, horario y restricciones alimentarias"
   },
   "requiere_revision_humana": true,
   "motivos_revision": [
     "Completar edad, fecha y horario",
     "Consultar alergias",
-    "Validar catálogo y precios",
+    "Solicitar precios vigentes",
     "Confirmar disponibilidad"
   ]
 }

@@ -5,6 +5,7 @@
 - Privacidad: nombres, teléfono, fecha y otros identificadores eliminados
 - Caso real: sí
 - Tipo de corrida: ejecución documental con Codex y conector de GitHub
-- Catálogo validado: no
+- Servicios y políticas: verificados contra propuesta comercial v3
+- Precios disponibles: no
 - Tokens: el entorno no expone medición por corrida
 - Resultado: el agente se detuvo correctamente por falta de datos esenciales
