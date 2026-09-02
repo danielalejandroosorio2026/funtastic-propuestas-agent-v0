@@ -75,3 +75,17 @@ Resultado verificado:
 - antes: 0 tests ejecutados; error `ModuleNotFoundError: No module named 'agent'`;
 - después: 6 tests aprobados en 0,49 segundos;
 - validación sin API: `OK: corridas/01-caso-normal/salida.json`.
+
+
+## D11 — Sustituir escenarios inventados por consultas reales reconstruidas
+
+El propietario aportó tres consultas comerciales reales de Funtastic. Se eliminaron nombres, teléfonos, fechas e identificadores, y se conservaron las necesidades comerciales relevantes.
+
+Decisión:
+
+- registrar `es_caso_real=true`;
+- describir el origen como “consulta reconstruida y anonimizada”;
+- no afirmar que los precios sean reales mientras el catálogo siga sin validar;
+- permitir que el agente se detenga y pida información cuando la consulta original esté incompleta.
+
+Esto mejora la honestidad de la evidencia: entradas reales, privacidad protegida y cotizaciones explícitamente preliminares.

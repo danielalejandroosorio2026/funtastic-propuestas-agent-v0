@@ -1,12 +1,10 @@
 # Metadata
 
-- Fecha de construcción: 2026-09-01
-- Tipo: demostración reproducible
-- Caso real: no
-- Modelo: Codex, sesión de construcción v2
-- Herramienta: conector de GitHub
-- Prompt: `prompts/system_prompt.md` + `prompts/user_prompt.md`
+- Fecha de registro: 2026-09-01
+- Origen: consulta comercial real reconstruida por el propietario
+- Privacidad: nombres, teléfono, fecha y otros identificadores eliminados
+- Caso real: sí
+- Tipo de corrida: ejecución documental con Codex y conector de GitHub
 - Catálogo validado: no
-- Tokens de entrada: no medidos en esta corrida de construcción
-- Tokens de salida: no medidos en esta corrida de construcción
-- Estado: debe reemplazarse por una corrida real anonimizada antes de entregar
+- Tokens: el entorno no expone medición por corrida
+- Resultado: el agente se detuvo correctamente por falta de datos esenciales

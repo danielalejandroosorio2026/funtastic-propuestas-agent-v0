@@ -1,17 +1,20 @@
 {
-  "consulta_id": "DEMO-002",
-  "es_caso_real": false,
-  "adulto_responsable": "Persona B",
+  "consulta_id": "REAL-ANON-002",
+  "es_caso_real": true,
+  "tipo_registro": "consulta reconstruida y anonimizada",
+  "adulto_responsable": "ANONIMIZADO",
   "whatsapp": "ANONIMIZADO",
-  "cumpleaniero": "Niño B",
-  "edad": 8,
-  "fecha_preferida": "2026-09-27",
-  "horario_preferido": "17:00",
-  "cantidad_ninos": 38,
-  "cantidad_adultos": 40,
-  "tematica": "Espacio",
-  "preferencia": "Opción económica",
-  "presupuesto_maximo_ars": 330000,
-  "adicionales_interes": [],
-  "comentarios": "Necesitamos entender el costo por invitados excedentes"
+  "cumpleaniero": "ANONIMIZADO",
+  "edad": null,
+  "fecha_preferida": null,
+  "horario_preferido": null,
+  "cantidad_ninos": 25,
+  "cantidad_adultos": 25,
+  "tematica": null,
+  "preferencia": "Cumpleaños saludable con refuerzo de comida para adultos",
+  "presupuesto_maximo_ars": null,
+  "adicionales_interes": [
+    "Catering adultos"
+  ],
+  "comentarios": "La familia solicita una propuesta saludable y quiere reforzar especialmente la comida para adultos."
 }

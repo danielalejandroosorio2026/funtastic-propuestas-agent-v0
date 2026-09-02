@@ -1,14 +1,18 @@
-# Corridas
+# Corridas reales anonimizadas
 
-Las corridas de esta rama son casos de demostración reproducibles, no consultas reales.
+Estas tres entradas fueron reconstruidas por el propietario a partir de consultas comerciales reales. Los nombres, teléfonos, fechas y otros identificadores fueron eliminados o generalizados para proteger la privacidad.
 
-Antes de la entrega final:
+- 01: cumpleaños conjunto entre cinco familias; 35 adultos; faltan niños y fecha.
+- 02: propuesta saludable para 25 niños y 25 adultos, con refuerzo de comida para adultos.
+- 03: cumpleaños de mellizos para 20 niños y 15 adultos, con prioridad de bajo costo.
 
-1. reemplazar cada entrada por una consulta real anonimizada;
-2. volver a ejecutar desde la misma versión del catálogo;
-3. guardar la salida original sin edición;
-4. completar modelo, fecha, tokens y costo en `metadata.md`;
-5. conservar los errores textuales;
-6. verificar el JSON contra el esquema.
+Las entradas son reales reconstruidas. Los precios de las salidas siguen siendo demostrativos porque el catálogo comercial todavía no fue validado.
 
-Las tres entradas cubren un caso normal, uno límite y uno riesgoso.
+Cada salida conserva:
+
+- datos faltantes;
+- recomendación;
+- cálculo cuando es posible;
+- alertas;
+- borrador de WhatsApp;
+- revisión humana obligatoria.

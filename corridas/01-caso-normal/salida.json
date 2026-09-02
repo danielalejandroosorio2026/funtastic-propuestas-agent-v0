@@ -1,51 +1,44 @@
 {
-  "estado": "BORRADOR",
-  "consulta_id": "DEMO-001",
-  "confianza": 0.9,
-  "datos_faltantes": [],
+  "estado": "REQUIERE_DATOS",
+  "consulta_id": "REAL-ANON-001",
+  "confianza": 0.96,
+  "datos_faltantes": [
+    "fecha_preferida",
+    "horario_preferido",
+    "cantidad_ninos",
+    "cantidad_de_cumpleanieros"
+  ],
   "paquete_recomendado": {
     "nombre": "Completa",
-    "justificacion": "Incluye hasta 30 niños y 30 adultos y se alinea con la preferencia de resolver la mayor parte del evento."
+    "justificacion": "Es una recomendación preliminar porque la familia busca una solución integral y no quiere ocuparse de la organización; debe confirmarse cuando se conozca la cantidad de niños y si festejan uno o varios niños."
   },
   "alternativa": null,
   "cotizacion": {
     "moneda": "ARS",
     "catalogo_validado": false,
-    "items": [
-      {
-        "concepto": "Paquete Completa",
-        "cantidad": 1,
-        "precio_unitario": 260000,
-        "subtotal": 260000,
-        "fuente": "datos/catalogo_paquetes.csv"
-      },
-      {
-        "concepto": "Decoracion tematica",
-        "cantidad": 1,
-        "precio_unitario": 45000,
-        "subtotal": 45000,
-        "fuente": "datos/adicionales.csv"
-      }
-    ],
-    "total_estimado": 305000
+    "items": [],
+    "total_estimado": null
   },
   "alertas": [
-    "Catálogo de demostración no validado",
-    "Disponibilidad de fecha pendiente"
+    "No cotizar hasta conocer la cantidad total de niños",
+    "Confirmar si festejan uno o varios niños",
+    "Catálogo y precios todavía no validados",
+    "Disponibilidad pendiente"
   ],
-  "mensaje_whatsapp": "Hola, Persona A. Preparamos un borrador para el cumple de Niña A. Por la cantidad de invitados y porque buscan resolver la mayor parte del evento, la opción Completa es la más adecuada. Como adicional, incluimos decoración temática. El valor estimado de demostración es ARS 305.000. La fecha, los valores y las condiciones deben ser confirmados por el equipo. ¿Querés que revisemos disponibilidad y preparemos el detalle final?",
+  "mensaje_whatsapp": "Hola. Para preparar una propuesta integral necesitamos confirmar cuántos niños participarían, si el festejo es para uno o varios cumpleañeros, y la fecha y horario preferidos. Con esos datos podremos recomendar la opción más adecuada para las cinco familias. La disponibilidad, los valores y las condiciones serán confirmados por el equipo.",
   "resumen_interno": {
-    "ninos": 25,
-    "adultos": 25,
-    "fecha": "2026-09-20",
-    "paquete": "Completa",
-    "total_estimado_ars": 305000,
-    "proximo_paso": "Validar catálogo, precio y disponibilidad"
+    "adultos": 35,
+    "ninos": "Pendiente",
+    "edad": 5,
+    "tipo_evento": "Cumpleaños conjunto con cinco familias",
+    "prioridad": "Solución integral",
+    "proximo_paso": "Solicitar cantidad de niños, cantidad de cumpleañeros, fecha y horario"
   },
   "requiere_revision_humana": true,
   "motivos_revision": [
+    "Completar datos esenciales",
+    "Validar capacidad",
     "Validar catálogo y precios",
-    "Confirmar disponibilidad",
-    "Revisar mensaje antes de enviar"
+    "Confirmar disponibilidad"
   ]
 }

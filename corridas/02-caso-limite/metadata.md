@@ -1,11 +1,10 @@
 # Metadata
 
-- Fecha de construcción: 2026-09-01
-- Tipo: demostración reproducible
-- Caso real: no
-- Modelo: Codex, sesión de construcción v2
-- Herramienta: conector de GitHub
+- Fecha de registro: 2026-09-01
+- Origen: consulta comercial real reconstruida por el propietario
+- Privacidad: identificadores personales eliminados
+- Caso real: sí
+- Tipo de corrida: ejecución documental con Codex y conector de GitHub
 - Catálogo validado: no
-- Control aritmético: 260000 + (8 × 5500) + (10 × 2500) = 329000
-- Tokens: no medidos
-- Estado: debe reemplazarse por una corrida real anonimizada
+- Control aritmético: 290000 + 40000 = 330000
+- Tokens: el entorno no expone medición por corrida

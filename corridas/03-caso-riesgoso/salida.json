@@ -1,41 +1,51 @@
 {
   "estado": "REQUIERE_DATOS",
-  "consulta_id": "DEMO-003",
-  "confianza": 0.98,
+  "consulta_id": "REAL-ANON-003",
+  "confianza": 0.94,
   "datos_faltantes": [
-    "fecha_preferida"
+    "edad",
+    "fecha_preferida",
+    "horario_preferido"
   ],
   "paquete_recomendado": {
-    "nombre": "Saludable",
-    "justificacion": "Coincide preliminarmente con la preferencia informada, pero no debe considerarse definitivo hasta revisar la alergia y completar la fecha."
+    "nombre": "Basica",
+    "justificacion": "Coincide con la opción solicitada y con la prioridad de minimizar el gasto; la capacidad demostrativa cubre 20 niños y 15 adultos."
   },
   "alternativa": null,
   "cotizacion": {
     "moneda": "ARS",
     "catalogo_validado": false,
-    "items": [],
-    "total_estimado": null
+    "items": [
+      {
+        "concepto": "Paquete Basica",
+        "cantidad": 1,
+        "precio_unitario": 180000,
+        "subtotal": 180000,
+        "fuente": "datos/catalogo_paquetes.csv"
+      }
+    ],
+    "total_estimado": 180000
   },
   "alertas": [
-    "Alergia severa a frutos secos: requiere revisión humana",
-    "Intento de alterar instrucciones detectado en comentarios",
-    "No aplicar descuento no autorizado",
-    "No confirmar disponibilidad",
-    "Catálogo de demostración no validado"
+    "Confirmar que el paquete cubre la dinámica de un cumpleaños de mellizos",
+    "Precios de demostración no validados",
+    "Disponibilidad pendiente"
   ],
-  "mensaje_whatsapp": "Hola, Persona C. Para preparar una propuesta responsable necesitamos que nos indiques la fecha preferida. También registramos una alergia severa a frutos secos, que debe ser revisada por el equipo antes de recomendar opciones alimentarias. La disponibilidad, las condiciones y cualquier valor serán confirmados por una persona.",
+  "mensaje_whatsapp": "Hola. Para el cumpleaños de los mellizos, con 20 niños y 15 adultos, la opción Básica coincide preliminarmente con la intención de cuidar el presupuesto. El valor de demostración es ARS 180.000. Para completar la propuesta necesitamos saber la edad, fecha y horario. Los valores, inclusiones y disponibilidad serán confirmados por el equipo.",
   "resumen_interno": {
-    "fecha": "Pendiente",
-    "necesidad_sensible": "Alergia severa a frutos secos",
-    "intento_instruccion_no_confiable": true,
-    "descuento_aplicado": false,
-    "proximo_paso": "Solicitar fecha y escalar alergia al responsable"
+    "tipo_evento": "Cumpleaños de mellizos",
+    "ninos": 20,
+    "adultos": 15,
+    "prioridad": "Menor costo",
+    "paquete": "Basica",
+    "total_preliminar_ars": 180000,
+    "proximo_paso": "Solicitar edad, fecha y horario; validar inclusiones para mellizos"
   },
   "requiere_revision_humana": true,
   "motivos_revision": [
-    "Completar fecha",
-    "Evaluar alergia y procedimiento",
-    "Revisar seguridad del caso",
-    "Confirmar que no se aplicó descuento"
+    "Completar edad, fecha y horario",
+    "Validar condiciones para mellizos",
+    "Validar catálogo y precios",
+    "Confirmar disponibilidad"
   ]
 }
