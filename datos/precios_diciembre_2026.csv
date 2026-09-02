@@ -1,0 +1,7 @@
+precios_validados,vigencia,tipo_dia,nombre,precio_base_ars,precio_nino_excedente_ars,precio_adulto_excedente_ars,precio_hora_adicional_ars,max_edad_nino_excedente,reserva_porcentaje,condicion_pago,fuente
+true,2026-12,Lun-Jue,Basica,1100000,18000,20000,352000,9,50,Efectivo promocional,Lista de precios diciembre 2026
+true,2026-12,Vie-Dom-Fer,Basica,1170000,19000,22000,375000,9,50,Efectivo promocional,Lista de precios diciembre 2026
+true,2026-12,Lun-Jue,Completa,1430000,23000,26000,458000,9,50,Efectivo promocional,Lista de precios diciembre 2026
+true,2026-12,Vie-Dom-Fer,Completa,1525000,25000,28000,488000,9,50,Efectivo promocional,Lista de precios diciembre 2026
+true,2026-12,Lun-Jue,Saludable,1250000,20000,23000,400000,9,50,Efectivo promocional,Lista de precios diciembre 2026
+true,2026-12,Vie-Dom-Fer,Saludable,1335000,22000,25000,428000,9,50,Efectivo promocional,Lista de precios diciembre 2026

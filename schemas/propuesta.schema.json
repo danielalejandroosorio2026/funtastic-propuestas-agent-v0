@@ -99,6 +99,8 @@
       "required": [
         "moneda",
         "catalogo_validado",
+        "vigencia",
+        "tipo_dia",
         "items",
         "conceptos_pendientes",
         "total_estimado"
@@ -109,6 +111,30 @@
         },
         "catalogo_validado": {
           "type": "boolean"
+        },
+        "vigencia": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}$"
+            }
+          ]
+        },
+        "tipo_dia": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "Lun-Jue",
+                "Vie-Dom-Fer"
+              ]
+            }
+          ]
         },
         "items": {
           "type": "array",
@@ -137,11 +163,12 @@
                 "type": "number",
                 "minimum": 0
               },
-              "fuente": {
-                "enum": [
-                  "datos/catalogo_paquetes.csv",
-                  "datos/adicionales.csv"
-                ]
+                "fuente": {
+                  "enum": [
+                    "datos/catalogo_paquetes.csv",
+                    "datos/adicionales.csv",
+                    "datos/precios_diciembre_2026.csv"
+                  ]
               }
             },
             "additionalProperties": false

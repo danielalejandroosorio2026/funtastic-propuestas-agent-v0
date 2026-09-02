@@ -9,6 +9,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 ALLOWED_FILES = {
     "datos/catalogo_paquetes.csv",
+    "datos/precios_diciembre_2026.csv",
     "datos/adicionales.csv",
     "datos/servicios_paquetes.md",
     "datos/politicas.md",
@@ -38,13 +39,17 @@ TOOLS = [
                 "package": {"type": "string", "enum": ["Basica", "Completa", "Saludable"]},
                 "children": {"type": "integer", "minimum": 1, "maximum": 300},
                 "adults": {"type": "integer", "minimum": 0, "maximum": 300},
+                "day_type": {
+                    "type": "string",
+                    "enum": ["Lun-Jue", "Vie-Dom-Fer", "Sin definir"],
+                    "description": "Tipo de día del evento. Usar Sin definir si falta la fecha o no se verificó si es feriado.",
+                },
                 "extras": {
                     "type": "array",
                     "items": {
                         "type": "string",
                         "enum": [
                             "Hora adicional",
-                            "Invitado adicional",
                             "Animacion especial",
                             "Fotografia",
                             "Talleres",
@@ -55,12 +60,13 @@ TOOLS = [
                             "Helados",
                             "Refuerzo comida adultos",
                             "Torta",
+                            "Menu cafeteria",
                         ],
                     },
-                    "maxItems": 12,
+                    "maxItems": 13,
                 },
             },
-            "required": ["package", "children", "adults", "extras"],
+            "required": ["package", "children", "adults", "day_type", "extras"],
             "additionalProperties": False,
         },
         "strict": True,
@@ -80,9 +86,19 @@ def _csv_rows(relative_path: str) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
-def calculate_quote(package: str, children: int, adults: int, extras: list[str]) -> dict[str, Any]:
+def calculate_quote(
+    package: str,
+    children: int,
+    adults: int,
+    day_type: str,
+    extras: list[str],
+) -> dict[str, Any]:
     packages = {row["nombre"]: row for row in _csv_rows("datos/catalogo_paquetes.csv")}
     additions = {row["nombre"]: row for row in _csv_rows("datos/adicionales.csv")}
+    prices = {
+        (row["nombre"], row["tipo_dia"]): row
+        for row in _csv_rows("datos/precios_diciembre_2026.csv")
+    }
     if package not in packages:
         raise ValueError("paquete inexistente")
     unknown = sorted(set(extras) - additions.keys())
@@ -90,6 +106,7 @@ def calculate_quote(package: str, children: int, adults: int, extras: list[str])
         raise ValueError(f"adicionales inexistentes: {unknown}")
 
     row = packages[package]
+    price_row = prices.get((package, day_type))
     items: list[dict[str, Any]] = []
     pending: list[str] = []
 
@@ -113,17 +130,48 @@ def calculate_quote(package: str, children: int, adults: int, extras: list[str])
     if children + adults > 100:
         raise ValueError("la cantidad total supera la capacidad máxima de 100 personas")
 
-    add(f"Paquete {package}", 1, row["precio_base_ars"], "datos/catalogo_paquetes.csv")
+    if price_row is None:
+        pending.append(f"Tipo de día/fecha para cotizar Paquete {package}")
+    else:
+        add(
+            f"Paquete {package}",
+            1,
+            price_row["precio_base_ars"],
+            "datos/precios_diciembre_2026.csv",
+        )
     excess_children = max(0, children - int(row["ninos_incluidos"]))
     excess_adults = max(0, adults - int(row["adultos_incluidos"]))
-    if excess_children or excess_adults:
-        add("Invitados adicionales", excess_children + excess_adults, "", "datos/adicionales.csv")
+    if excess_children:
+        add(
+            "Niños adicionales",
+            excess_children,
+            "" if price_row is None else price_row["precio_nino_excedente_ars"],
+            "datos/precios_diciembre_2026.csv",
+        )
+    if excess_adults:
+        add(
+            "Adultos adicionales",
+            excess_adults,
+            "" if price_row is None else price_row["precio_adulto_excedente_ars"],
+            "datos/precios_diciembre_2026.csv",
+        )
     for extra in extras:
-        add(extra, 1, additions[extra]["precio_ars"], "datos/adicionales.csv")
+        if extra == "Hora adicional":
+            add(
+                extra,
+                1,
+                "" if price_row is None else price_row["precio_hora_adicional_ars"],
+                "datos/precios_diciembre_2026.csv",
+            )
+        else:
+            add(extra, 1, additions[extra]["precio_ars"], "datos/adicionales.csv")
 
     return {
         "moneda": "ARS",
-        "catalogo_validado": row["precios_disponibles"].lower() == "true",
+        "catalogo_validado": price_row is not None
+        and price_row["precios_validados"].lower() == "true",
+        "vigencia": None if price_row is None else price_row["vigencia"],
+        "tipo_dia": None if price_row is None else price_row["tipo_dia"],
         "items": items,
         "conceptos_pendientes": pending,
         "total_estimado": None if pending else sum(item["subtotal"] for item in items),

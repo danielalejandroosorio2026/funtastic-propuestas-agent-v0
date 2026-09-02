@@ -117,3 +117,20 @@ El PDF no contiene precios. Por esa razón:
 - se recalibraron las pruebas.
 
 Resultado verificado: 9 tests aprobados en 0,20 segundos.
+
+## D14 — Incorporar precios con vigencia y tipo de día
+
+El propietario aportó la lista de precios de diciembre de 2026. Se cargaron seis combinaciones verificadas: tres opciones por dos tipos de día. También se incorporaron las tarifas de niño adicional hasta 9 años, adulto adicional y hora adicional.
+
+Decisiones de control:
+
+- no extender estos valores a meses distintos de diciembre de 2026;
+- no mezclar los cupos de 25 niños y 25 adultos;
+- exigir la clasificación `Lun-Jue` o `Vie-Dom-Fer` antes de calcular;
+- tratar los feriados con la segunda tarifa;
+- aplicar para diciembre la reserva específica del 50%, dejando documentada la diferencia con el 30% de la propuesta general;
+- conservar como pendientes los adicionales que no tienen importe publicado.
+
+Se agregó una corrida determinística de prueba que calcula ARS 2.270.000 para una opción Completa de viernes a domingo/feriado con 38 niños y 40 adultos.
+
+Resultado verificado: 12 tests aprobados en 0,21 segundos.

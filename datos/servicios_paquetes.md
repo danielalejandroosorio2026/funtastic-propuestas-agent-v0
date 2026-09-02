@@ -1,6 +1,6 @@
 # Servicios incluidos por paquete
 
-Fuente: propuesta comercial Funtastic v3, revisada visualmente. El documento no informa precios.
+Fuente: propuesta comercial Funtastic v3, revisada visualmente. Los precios se administran por separado en `datos/precios_diciembre_2026.csv`.
 
 ## Incluidos en las tres opciones
 

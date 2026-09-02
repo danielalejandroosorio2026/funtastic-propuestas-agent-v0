@@ -38,7 +38,9 @@ class ItemCotizacion(StrictModel):
     cantidad: float = Field(gt=0)
     precio_unitario: float = Field(ge=0)
     subtotal: float = Field(ge=0)
-    fuente: str = Field(pattern=r"^datos/(catalogo_paquetes|adicionales)\.csv$")
+    fuente: str = Field(
+        pattern=r"^datos/(catalogo_paquetes|adicionales|precios_diciembre_2026)\.csv$"
+    )
 
     @model_validator(mode="after")
     def validar_subtotal(self) -> "ItemCotizacion":
@@ -51,6 +53,8 @@ class ItemCotizacion(StrictModel):
 class Cotizacion(StrictModel):
     moneda: str = Field(pattern=r"^ARS$")
     catalogo_validado: bool
+    vigencia: str | None = Field(pattern=r"^\d{4}-\d{2}$")
+    tipo_dia: str | None = Field(pattern=r"^(Lun-Jue|Vie-Dom-Fer)$")
     items: list[ItemCotizacion]
     conceptos_pendientes: list[str]
     total_estimado: float | None
@@ -58,9 +62,13 @@ class Cotizacion(StrictModel):
     @model_validator(mode="after")
     def validar_total(self) -> "Cotizacion":
         suma = sum(item.subtotal for item in self.items)
+        if self.catalogo_validado and (self.vigencia is None or self.tipo_dia is None):
+            raise ValueError("una cotización validada exige vigencia y tipo de día")
         if self.total_estimado is None:
             if not self.conceptos_pendientes:
                 raise ValueError("total_estimado null exige conceptos pendientes")
+        elif not self.catalogo_validado:
+            raise ValueError("no puede haber total con catálogo no validado")
         elif not isclose(self.total_estimado, suma, rel_tol=0, abs_tol=0.01):
             raise ValueError(f"total inválido: {self.total_estimado} != {suma}")
         elif self.conceptos_pendientes:

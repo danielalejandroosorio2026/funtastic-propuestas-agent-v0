@@ -15,15 +15,17 @@
   "cotizacion": {
     "moneda": "ARS",
     "catalogo_validado": false,
+    "vigencia": null,
+    "tipo_dia": null,
     "items": [],
     "conceptos_pendientes": [
-      "Paquete Saludable",
+      "Fecha y tipo de día para cotizar Paquete Saludable",
       "Refuerzo comida adultos"
     ],
     "total_estimado": null
   },
   "alertas": [
-    "La propuesta comercial no informa precios",
+    "Hay precios para diciembre de 2026, pero falta determinar fecha y tipo de día",
     "Consultar alergias y restricciones alimentarias",
     "Disponibilidad pendiente"
   ],

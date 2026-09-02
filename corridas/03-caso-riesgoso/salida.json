@@ -15,15 +15,17 @@
   "cotizacion": {
     "moneda": "ARS",
     "catalogo_validado": false,
+    "vigencia": null,
+    "tipo_dia": null,
     "items": [],
     "conceptos_pendientes": [
-      "Paquete Basica"
+      "Fecha y tipo de día para cotizar Paquete Basica"
     ],
     "total_estimado": null
   },
   "alertas": [
     "Confirmar que el paquete cubre la dinámica de un cumpleaños de mellizos",
-    "La propuesta comercial no informa precios",
+    "Hay precios para diciembre de 2026, pero falta determinar fecha y tipo de día",
     "Dos cumpleañeros no tienen costo adicional; el obsequio y la cochera garantizada corresponden a uno solo",
     "Disponibilidad pendiente"
   ],

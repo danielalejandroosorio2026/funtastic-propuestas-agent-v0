@@ -6,7 +6,7 @@ La disponibilidad debe ser verificada por el equipo de Funtastic. El agente no p
 
 ## ¿Cómo se reserva?
 
-Con una seña del 30% del valor total. El saldo y los adicionales se abonan en efectivo el día del evento. La seña no es reembolsable ante cancelación.
+Para diciembre de 2026, la lista de precios establece una reserva del 50%, que confirma fecha y valor. La propuesta general anterior indicaba 30%; para otros períodos debe confirmarlo el equipo. La seña no es reembolsable ante cancelación.
 
 ## ¿Se puede festejar a más de un cumpleañero?
 
@@ -28,6 +28,6 @@ Hasta los 8 años.
 
 Es compartido con el complejo. Hay una cochera garantizada para el cumpleañero; el resto está sujeto a disponibilidad.
 
-## ¿Hay precios vigentes en la propuesta comercial?
+## ¿Hay precios vigentes?
 
-No. El documento recibido no contiene importes. El agente debe solicitar cotización al equipo y dejar el total pendiente.
+Sí, exclusivamente para diciembre de 2026 y diferenciados entre lunes a jueves y viernes a domingo o feriado. Son promocionales en efectivo. Si falta la fecha o corresponde a otro mes, el agente debe solicitar confirmación.

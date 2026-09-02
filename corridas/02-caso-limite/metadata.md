@@ -6,6 +6,6 @@
 - Caso real: sí
 - Tipo de corrida: ejecución documental con Codex y conector de GitHub
 - Servicios y políticas: verificados contra propuesta comercial v3
-- Precios disponibles: no
-- Control de seguridad: total nulo y conceptos pendientes
+- Precios disponibles: sí, para diciembre de 2026
+- Control de seguridad: total nulo porque falta fecha/tipo de día y el refuerzo de comida requiere cotización
 - Tokens: el entorno no expone medición por corrida

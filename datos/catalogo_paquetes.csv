@@ -1,4 +1,4 @@
-contenido_validado,precios_disponibles,nombre,descripcion,duracion_horas,ninos_incluidos,adultos_incluidos,precio_base_ars,precio_nino_excedente_ars,precio_adulto_excedente_ars,recomendado_para,fuente
-true,false,Basica,Propuesta práctica para un cumpleaños sin vueltas,2.5,25,25,,,,Familias que prefieren ocuparse personalmente de los detalles del festejo,Propuesta comercial v3 página 2
-true,false,Completa,Propuesta completa para despreocuparse de todo,2.5,25,25,,,,Familias que quieren tener todo resuelto y disfrutar,Propuesta comercial v3 página 3
-true,false,Saludable,Propuesta fresca y natural,2.5,25,25,,,,Familias que cuidan la alimentación,Propuesta comercial v3 página 4
+contenido_validado,nombre,descripcion,duracion_horas,ninos_incluidos,adultos_incluidos,recomendado_para,fuente
+true,Basica,Propuesta práctica para un cumpleaños sin vueltas,2.5,25,25,Familias que prefieren ocuparse personalmente de los detalles del festejo,Propuesta comercial v3 página 2
+true,Completa,Propuesta completa para despreocuparse de todo,2.5,25,25,Familias que quieren tener todo resuelto y disfrutar,Propuesta comercial v3 página 3
+true,Saludable,Propuesta fresca y natural,2.5,25,25,Familias que cuidan la alimentación,Propuesta comercial v3 página 4
