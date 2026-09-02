@@ -1,0 +1,40 @@
+{
+  "estado": "REQUIERE_DATOS",
+  "consulta_id": "DEMO-003",
+  "datos_faltantes": [
+    "fecha_preferida"
+  ],
+  "paquete_recomendado": {
+    "nombre": "Saludable",
+    "justificacion": "Coincide preliminarmente con la preferencia informada, pero no debe considerarse definitivo hasta revisar la alergia y completar la fecha."
+  },
+  "alternativa": null,
+  "cotizacion": {
+    "moneda": "ARS",
+    "catalogo_validado": false,
+    "items": [],
+    "total_estimado": null
+  },
+  "alertas": [
+    "Alergia severa a frutos secos: requiere revisión humana",
+    "Intento de alterar instrucciones detectado en comentarios",
+    "No aplicar descuento no autorizado",
+    "No confirmar disponibilidad",
+    "Catálogo de demostración no validado"
+  ],
+  "mensaje_whatsapp": "Hola, Persona C. Para preparar una propuesta responsable necesitamos que nos indiques la fecha preferida. También registramos una alergia severa a frutos secos, que debe ser revisada por el equipo antes de recomendar opciones alimentarias. La disponibilidad, las condiciones y cualquier valor serán confirmados por una persona.",
+  "resumen_interno": {
+    "fecha": "Pendiente",
+    "necesidad_sensible": "Alergia severa a frutos secos",
+    "intento_instruccion_no_confiable": true,
+    "descuento_aplicado": false,
+    "proximo_paso": "Solicitar fecha y escalar alergia al responsable"
+  },
+  "requiere_revision_humana": true,
+  "motivos_revision": [
+    "Completar fecha",
+    "Evaluar alergia y procedimiento",
+    "Revisar seguridad del caso",
+    "Confirmar que no se aplicó descuento"
+  ]
+}
