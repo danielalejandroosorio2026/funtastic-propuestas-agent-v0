@@ -42,3 +42,36 @@ Registrar aquí, con texto original:
 - única pieza modificada;
 - salida antes y después;
 - decisión de mantener o revertir.
+
+
+## D9 — Convertir el feedback técnico en controles ejecutables
+
+El informe pedagógico asignó 53/100 y recomendó runner, reintentos, guardas, dependencias fijadas, validación estricta y tests. Parte de la evidencia citada no correspondía con la rama (mencionaba diez corridas y un runner inexistente), por lo que se verificó cada hallazgo antes de implementarlo.
+
+Cambio técnico: commit [49cd8f1](https://github.com/danielalejandroosorio2026/funtastic-propuestas-agent-v0/commit/49cd8f1dff37b0f5f492146be8edff16b99c7136).
+
+Métrica diferencial:
+
+| Control | Antes | Después |
+|---|---:|---:|
+| Runner API | 0 | 1 |
+| Herramientas con schema | 0 | 2 |
+| Validación Pydantic | 0 | 1 frontera estricta |
+| Tests automatizados | 0 | 6 |
+| Reintentos 429/503 | 0 | hasta 5 |
+| Guard de iteraciones | 0 | máximo 8 |
+| Guard de tokens | 0 | máximo 30.000 |
+
+Latencia y tokens antes/después quedan pendientes hasta ejecutar con una API key y casos reales. No se fabrican mediciones.
+
+## D10 — Corregir un fallo real de reproducibilidad
+
+La primera ejecución de `pytest -q` falló durante la colección porque la raíz del repositorio no estaba en el import path. Se agregó `pytest.ini` y se fijó Python 3.12.
+
+Cambio técnico: commit [4615f88](https://github.com/danielalejandroosorio2026/funtastic-propuestas-agent-v0/commit/4615f88743974f78902e87fbcfeb2392948ff537).
+
+Resultado verificado:
+
+- antes: 0 tests ejecutados; error `ModuleNotFoundError: No module named 'agent'`;
+- después: 6 tests aprobados en 0,49 segundos;
+- validación sin API: `OK: corridas/01-caso-normal/salida.json`.
