@@ -1,48 +1,59 @@
 # Análisis económico
 
-## Estado
+## Modelo operativo de referencia
 
-Las corridas de construcción no exponen medición de tokens, por eso no se inventan cifras. Antes de entregar se deben registrar tokens reales o una estimación reproducible claramente identificada.
+La configuración predeterminada usa `gpt-5.6-luna`, elegido para cargas sensibles a costo. Tarifas de referencia al 01/09/2026:
 
-## Medición por corrida
+- entrada: USD 0,20 por millón de tokens;
+- entrada cacheada: USD 0,02 por millón;
+- salida: USD 1,20 por millón;
+- escritura explícita de caché: 1,25 veces la tarifa de entrada no cacheada.
 
-| Campo | Valor |
-|---|---:|
-| Tokens de entrada | pendiente |
-| Tokens de salida | pendiente |
-| Precio por millón de tokens de entrada | pendiente según modelo |
-| Precio por millón de tokens de salida | pendiente según modelo |
-| Costo total | pendiente |
+Verificar nuevamente las tarifas oficiales antes de entregar.
 
-Fórmula:
+## Supuesto base
 
-```text
-costo = entrada_tokens / 1.000.000 × precio_entrada
-      + salida_tokens / 1.000.000 × precio_salida
-```
+- 5.000 tokens de entrada;
+- 1.000 tokens de salida;
+- 100 propuestas por semana;
+- 52 semanas;
+- 80% de la entrada reutilizable cuando la caché acierta.
 
-## Proyección
+| Escenario | Costo/corrida | Semanal | Anual |
+|---|---:|---:|---:|
+| Sin caché | USD 0,00220 | USD 0,220 | USD 11,44 |
+| Con 80% de entrada cacheada | USD 0,00148 | USD 0,148 | USD 7,70 |
+| Pico 5× sin caché | USD 0,00220 | USD 1,100 | USD 57,20 |
+| Pico 5× con caché | USD 0,00148 | USD 0,740 | USD 38,48 |
 
-Registrar:
+Ahorro estimado con 80% de caché: 32,7%.
 
-- consultas promedio por semana;
-- costo por corrida;
-- costo semanal;
-- costo anual;
-- minutos humanos actuales por propuesta;
-- minutos humanos esperados con el agente;
-- ahorro anual estimado.
+## SLO y picos de carga
 
-## Elección de modelo
+SLO inicial:
 
-Criterio: diseñar con un modelo capaz y operar con el modelo más pequeño que pase estos controles:
+- 95% de corridas válidas sin intervención técnica;
+- latencia p95 menor a 30 segundos;
+- error de proveedor menor a 1%;
+- cero propuestas persistidas sin validación Pydantic.
 
-1. cero precios inventados;
-2. cálculo correcto;
-3. JSON válido;
-4. detección de datos faltantes;
-5. detección del comentario malicioso;
-6. escalamiento de alergias;
-7. prohibición de confirmar fecha o descuento.
+En picos 5×, el costo crece linealmente. El runner aplica backoff con jitter ante 429/503; esto protege estabilidad, pero puede elevar la latencia. Si p95 supera 30 segundos durante tres mediciones consecutivas:
 
-Comparar al menos dos modelos sobre las mismas tres entradas y registrar precisión, costo y latencia.
+1. reducir concurrencia;
+2. priorizar consultas pendientes más antiguas;
+3. revisar tamaño del contexto;
+4. degradar de manera segura a cola manual.
+
+## Medición real
+
+Cada ejecución genera metadata con:
+
+- tokens de entrada;
+- tokens cacheados;
+- tokens de salida;
+- costo estimado;
+- latencia;
+- modelo;
+- hashes de prompts.
+
+Las cifras de esta matriz son sensibilidad, no sustituyen las tres mediciones reales.

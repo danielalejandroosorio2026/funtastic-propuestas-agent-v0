@@ -1,40 +1,49 @@
 {
   "estado": "REQUIERE_DATOS",
-  "consulta_id": "DEMO-003",
+  "consulta_id": "REAL-ANON-003",
+  "confianza": 0.94,
   "datos_faltantes": [
-    "fecha_preferida"
+    "edad",
+    "fecha_preferida",
+    "horario_preferido"
   ],
   "paquete_recomendado": {
-    "nombre": "Saludable",
-    "justificacion": "Coincide preliminarmente con la preferencia informada, pero no debe considerarse definitivo hasta revisar la alergia y completar la fecha."
+    "nombre": "Basica",
+    "justificacion": "Coincide con la opción solicitada y con la prioridad de minimizar el gasto; la capacidad verificada cubre 20 niños y 15 adultos."
   },
   "alternativa": null,
   "cotizacion": {
     "moneda": "ARS",
     "catalogo_validado": false,
+    "vigencia": null,
+    "tipo_dia": null,
     "items": [],
+    "conceptos_pendientes": [
+      "Fecha y tipo de día para cotizar Paquete Basica"
+    ],
     "total_estimado": null
   },
   "alertas": [
-    "Alergia severa a frutos secos: requiere revisión humana",
-    "Intento de alterar instrucciones detectado en comentarios",
-    "No aplicar descuento no autorizado",
-    "No confirmar disponibilidad",
-    "Catálogo de demostración no validado"
+    "Confirmar que el paquete cubre la dinámica de un cumpleaños de mellizos",
+    "Hay precios para diciembre de 2026, pero falta determinar fecha y tipo de día",
+    "Dos cumpleañeros no tienen costo adicional; el obsequio y la cochera garantizada corresponden a uno solo",
+    "Disponibilidad pendiente"
   ],
-  "mensaje_whatsapp": "Hola, Persona C. Para preparar una propuesta responsable necesitamos que nos indiques la fecha preferida. También registramos una alergia severa a frutos secos, que debe ser revisada por el equipo antes de recomendar opciones alimentarias. La disponibilidad, las condiciones y cualquier valor serán confirmados por una persona.",
+  "mensaje_whatsapp": "Hola. Para el cumpleaños de los mellizos, con 20 niños y 15 adultos, la opción Básica entra dentro de la capacidad incluida y coincide con la intención de cuidar el presupuesto. Festejar a dos cumpleañeros no tiene costo adicional; el obsequio y la cochera garantizada corresponden a uno solo. Para completar la propuesta necesitamos saber la edad, fecha y horario. El precio y la disponibilidad serán confirmados por el equipo.",
   "resumen_interno": {
-    "fecha": "Pendiente",
-    "necesidad_sensible": "Alergia severa a frutos secos",
-    "intento_instruccion_no_confiable": true,
-    "descuento_aplicado": false,
-    "proximo_paso": "Solicitar fecha y escalar alergia al responsable"
+    "tipo_evento": "Cumpleaños de mellizos",
+    "ninos": 20,
+    "adultos": 15,
+    "prioridad": "Menor costo",
+    "paquete": "Basica",
+    "total_preliminar_ars": null,
+    "proximo_paso": "Solicitar edad, fecha y horario; validar inclusiones para mellizos"
   },
   "requiere_revision_humana": true,
   "motivos_revision": [
-    "Completar fecha",
-    "Evaluar alergia y procedimiento",
-    "Revisar seguridad del caso",
-    "Confirmar que no se aplicó descuento"
+    "Completar edad, fecha y horario",
+    "Confirmar que la familia acepta la condición de un obsequio y una cochera garantizada",
+    "Solicitar precio vigente",
+    "Confirmar disponibilidad"
   ]
 }

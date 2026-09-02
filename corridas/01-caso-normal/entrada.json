@@ -1,19 +1,18 @@
 {
-  "consulta_id": "DEMO-001",
-  "es_caso_real": false,
-  "adulto_responsable": "Persona A",
+  "consulta_id": "REAL-ANON-001",
+  "es_caso_real": true,
+  "tipo_registro": "consulta reconstruida y anonimizada",
+  "adulto_responsable": "ANONIMIZADO",
   "whatsapp": "ANONIMIZADO",
-  "cumpleaniero": "Niña A",
-  "edad": 6,
-  "fecha_preferida": "2026-09-20",
-  "horario_preferido": "16:00",
-  "cantidad_ninos": 25,
-  "cantidad_adultos": 25,
-  "tematica": "Princesas",
-  "preferencia": "Resolver la mayor parte del evento",
+  "cumpleaniero": "Niño de 5 años",
+  "edad": 5,
+  "fecha_preferida": null,
+  "horario_preferido": null,
+  "cantidad_ninos": null,
+  "cantidad_adultos": 35,
+  "tematica": null,
+  "preferencia": "Cumpleaños conjunto con otras cuatro familias; buscan una solución integral y no quieren ocuparse de la organización",
   "presupuesto_maximo_ars": null,
-  "adicionales_interes": [
-    "Decoracion tematica"
-  ],
-  "comentarios": "Sin observaciones"
+  "adicionales_interes": [],
+  "comentarios": "La consulta no informa cantidad total de niños ni si festejan uno o varios niños."
 }

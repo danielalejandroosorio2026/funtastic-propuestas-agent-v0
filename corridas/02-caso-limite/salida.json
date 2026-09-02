@@ -1,62 +1,48 @@
 {
-  "estado": "BORRADOR",
-  "consulta_id": "DEMO-002",
-  "datos_faltantes": [],
+  "estado": "REQUIERE_DATOS",
+  "consulta_id": "REAL-ANON-002",
+  "confianza": 0.93,
+  "datos_faltantes": [
+    "edad",
+    "fecha_preferida",
+    "horario_preferido"
+  ],
   "paquete_recomendado": {
-    "nombre": "Completa",
-    "justificacion": "Aunque la familia prioriza presupuesto, resulta más conveniente para 38 niños y 40 adultos por su mayor capacidad incluida."
+    "nombre": "Saludable",
+    "justificacion": "Coincide con la preferencia explícita de la familia y cubre la cantidad informada de 25 niños y 25 adultos."
   },
-  "alternativa": {
-    "nombre": "Basica",
-    "diferencia": "Con los excedentes demostrativos alcanzaría ARS 348.000, por encima de la opción Completa."
-  },
+  "alternativa": null,
   "cotizacion": {
     "moneda": "ARS",
     "catalogo_validado": false,
-    "items": [
-      {
-        "concepto": "Paquete Completa",
-        "cantidad": 1,
-        "precio_unitario": 260000,
-        "subtotal": 260000,
-        "fuente": "datos/catalogo_paquetes.csv"
-      },
-      {
-        "concepto": "Niños excedentes",
-        "cantidad": 8,
-        "precio_unitario": 5500,
-        "subtotal": 44000,
-        "fuente": "datos/catalogo_paquetes.csv"
-      },
-      {
-        "concepto": "Adultos excedentes",
-        "cantidad": 10,
-        "precio_unitario": 2500,
-        "subtotal": 25000,
-        "fuente": "datos/catalogo_paquetes.csv"
-      }
+    "vigencia": null,
+    "tipo_dia": null,
+    "items": [],
+    "conceptos_pendientes": [
+      "Fecha y tipo de día para cotizar Paquete Saludable",
+      "Refuerzo comida adultos"
     ],
-    "total_estimado": 329000
+    "total_estimado": null
   },
   "alertas": [
-    "Catálogo de demostración no validado",
-    "Total estimado cercano al presupuesto máximo",
-    "Capacidad total y disponibilidad deben validarse"
+    "Hay precios para diciembre de 2026, pero falta determinar fecha y tipo de día",
+    "Consultar alergias y restricciones alimentarias",
+    "Disponibilidad pendiente"
   ],
-  "mensaje_whatsapp": "Hola, Persona B. Para 38 niños y 40 adultos, la opción Completa resulta más conveniente por la capacidad incluida. Con los excedentes informados, el valor estimado de demostración es ARS 329.000. Está dentro del presupuesto indicado por un margen pequeño. El equipo debe validar capacidad, disponibilidad, valores y condiciones antes de confirmar. ¿Querés que revisemos esos puntos?",
+  "mensaje_whatsapp": "Hola. Por la cantidad de invitados y la preferencia informada, la opción Saludable es adecuada y ya incluye comida para adultos: medialunas, medialunas con jamón y queso y una bandeja dulce. Podemos consultar además un refuerzo de comida. Para preparar el detalle final necesitamos conocer la edad, la fecha, el horario y si existen alergias o restricciones alimentarias. El precio y la disponibilidad serán confirmados por el equipo.",
   "resumen_interno": {
-    "ninos": 38,
-    "adultos": 40,
-    "presupuesto_maximo_ars": 330000,
-    "paquete": "Completa",
-    "total_estimado_ars": 329000,
-    "proximo_paso": "Validar capacidad, catálogo y disponibilidad"
+    "ninos": 25,
+    "adultos": 25,
+    "paquete": "Saludable",
+    "adicional": "Refuerzo comida adultos sujeto a cotización",
+    "total_preliminar_ars": null,
+    "proximo_paso": "Solicitar edad, fecha, horario y restricciones alimentarias"
   },
   "requiere_revision_humana": true,
   "motivos_revision": [
-    "Validar capacidad total",
-    "Validar precios",
-    "Confirmar disponibilidad",
-    "Revisar ajuste al presupuesto"
+    "Completar edad, fecha y horario",
+    "Consultar alergias",
+    "Solicitar precios vigentes",
+    "Confirmar disponibilidad"
   ]
 }

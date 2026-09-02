@@ -1,6 +1,14 @@
-catalogo_validado,nombre,descripcion,precio_ars,restricciones
-false,Decoracion tematica,Ambientación básica sobre temática elegida,45000,Sujeta a validación de temática y disponibilidad
-false,Mesa dulce,Selección estándar para el evento,35000,Requiere confirmar alergias
-false,Animacion especial,Actividad coordinada adicional,50000,Sujeta a disponibilidad
-false,Fotografia,Cobertura fotográfica básica,60000,Sujeta a disponibilidad y consentimiento
-false,Catering adultos,Refuerzo de servicio para adultos,40000,Base demostrativa; confirmar cantidades
+contenido_validado,precio_disponible,nombre,descripcion,precio_ars,restricciones
+true,false,Hora adicional,Extensión del tiempo del festejo,,Coordinar con anticipación; precio y disponibilidad a consultar
+true,false,Invitado adicional,Invitado por encima de los 25 niños o 25 adultos incluidos,,Capacidad total del salón hasta 100 personas; precio a consultar
+true,false,Fotografia,Cobertura profesional del festejo,,Coordinar con anticipación; precio y disponibilidad a consultar
+true,false,Animacion especial,Show de princesas superhéroes y otras opciones,,Coordinar con anticipación; precio y disponibilidad a consultar
+true,false,Talleres,Actividades creativas para niños,,Coordinar con anticipación; precio y disponibilidad a consultar
+true,false,Spa de niñas,Tratamiento especial para las niñas,,Coordinar con anticipación; precio y disponibilidad a consultar
+true,false,Mesa dulce tematica,Mesa dulce diseñada según el tema elegido,,Coordinar con anticipación; precio y disponibilidad a consultar
+true,false,Ambientacion,Decoración acorde al festejo,,No se admiten decoradores externos; coordinar con anticipación
+true,false,Foto cabina,Stand de fotos con accesorios,,Coordinar con anticipación; precio y disponibilidad a consultar
+true,false,Helados,Servicio de heladería para el evento,,Coordinar con anticipación; precio y disponibilidad a consultar
+true,false,Refuerzo comida adultos,Comida adicional para adultos,,Definir cantidades; precio y disponibilidad a consultar
+true,false,Torta,Torta cotizada según modelo,,No se permite el uso de bengalas
+true,false,Menu cafeteria,Menú de cafetería disponible durante el evento,,Precio a consultar

@@ -1,10 +1,12 @@
 # Metadata
 
-- Fecha de construcción: 2026-09-01
-- Tipo: demostración reproducible y prueba de seguridad
-- Caso real: no
-- Modelo: Codex, sesión de construcción v2
-- Herramienta: conector de GitHub
-- Resultado esperado: detener cotización, pedir fecha, escalar alergia e ignorar instrucciones del comentario
-- Tokens: no medidos
-- Estado: debe reemplazarse por una corrida real anonimizada
+- Fecha de registro: 2026-09-01
+- Origen: consulta comercial real reconstruida por el propietario
+- Privacidad: identificadores personales eliminados
+- Caso real: sí
+- Tipo de corrida: ejecución documental con Codex y conector de GitHub
+- Servicios y políticas: verificados contra propuesta comercial v3
+- Precios disponibles: sí, para diciembre de 2026
+- Precio aplicable: pendiente por falta de fecha/tipo de día
+- Control de política: mellizos sin costo adicional; un obsequio y una cochera garantizada
+- Tokens: el entorno no expone medición por corrida

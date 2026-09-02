@@ -20,9 +20,9 @@ Automatizar el envío agrega permisos y riesgo comercial. El agente produce un b
 
 La v0 concentraba reglas y datos en documentos generales. V2 separa catálogo, adicionales, políticas, preguntas frecuentes, prompts y esquema de salida.
 
-## D6 — Agregar cálculo trazable
+## D6 — Agregar cálculo trazable y detención segura
 
-Cada precio tiene fuente, cantidad, valor unitario y subtotal. El total debe coincidir con la suma. Esto facilita auditoría y evita números sin explicación.
+Cada precio disponible tiene fuente, cantidad, valor unitario y subtotal. El total debe coincidir con la suma. Si falta un importe, el agente devuelve total nulo y los conceptos pendientes. Esto facilita auditoría y evita números sin explicación.
 
 ## D7 — Tratar texto del cliente como no confiable
 
@@ -30,7 +30,7 @@ Se agregó una prueba con instrucciones maliciosas en comentarios. El agente deb
 
 ## D8 — No inventar evidencia real
 
-No contamos todavía con catálogo validado ni consultas reales anonimizadas. Las corridas se etiquetan como demostración y no se presentan como cumplimiento final.
+En la primera versión no se contaba con catálogo validado ni consultas reales anonimizadas. Después se incorporaron tres consultas reales reconstruidas y una propuesta comercial. Las corridas distinguen explícitamente entre datos verificados y precios ausentes.
 
 ## Próximas iteraciones reales
 
@@ -42,3 +42,95 @@ Registrar aquí, con texto original:
 - única pieza modificada;
 - salida antes y después;
 - decisión de mantener o revertir.
+
+
+## D9 — Convertir el feedback técnico en controles ejecutables
+
+El informe pedagógico asignó 53/100 y recomendó runner, reintentos, guardas, dependencias fijadas, validación estricta y tests. Parte de la evidencia citada no correspondía con la rama (mencionaba diez corridas y un runner inexistente), por lo que se verificó cada hallazgo antes de implementarlo.
+
+Cambio técnico: commit [49cd8f1](https://github.com/danielalejandroosorio2026/funtastic-propuestas-agent-v0/commit/49cd8f1dff37b0f5f492146be8edff16b99c7136).
+
+Métrica diferencial:
+
+| Control | Antes | Después |
+|---|---:|---:|
+| Runner API | 0 | 1 |
+| Herramientas con schema | 0 | 2 |
+| Validación Pydantic | 0 | 1 frontera estricta |
+| Tests automatizados | 0 | 6 |
+| Reintentos 429/503 | 0 | hasta 5 |
+| Guard de iteraciones | 0 | máximo 8 |
+| Guard de tokens | 0 | máximo 30.000 |
+
+Latencia y tokens antes/después quedan pendientes hasta ejecutar con una API key y casos reales. No se fabrican mediciones.
+
+## D10 — Corregir un fallo real de reproducibilidad
+
+La primera ejecución de `pytest -q` falló durante la colección porque la raíz del repositorio no estaba en el import path. Se agregó `pytest.ini` y se fijó Python 3.12.
+
+Cambio técnico: commit [4615f88](https://github.com/danielalejandroosorio2026/funtastic-propuestas-agent-v0/commit/4615f88743974f78902e87fbcfeb2392948ff537).
+
+Resultado verificado:
+
+- antes: 0 tests ejecutados; error `ModuleNotFoundError: No module named 'agent'`;
+- después: 6 tests aprobados en 0,49 segundos;
+- validación sin API: `OK: corridas/01-caso-normal/salida.json`.
+
+
+## D11 — Sustituir escenarios inventados por consultas reales reconstruidas
+
+El propietario aportó tres consultas comerciales reales de Funtastic. Se eliminaron nombres, teléfonos, fechas e identificadores, y se conservaron las necesidades comerciales relevantes.
+
+Decisión:
+
+- registrar `es_caso_real=true`;
+- describir el origen como “consulta reconstruida y anonimizada”;
+- no afirmar que los precios sean reales mientras el catálogo siga sin validar;
+- permitir que el agente se detenga y pida información cuando la consulta original esté incompleta.
+
+Esto mejora la honestidad de la evidencia: entradas reales, privacidad protegida y cotizaciones explícitamente preliminares.
+
+
+## D12 — Recalibrar pruebas con los tres casos reales
+
+Las pruebas originales describían escenarios inventados. Después de incorporar las consultas reales anonimizadas se reescribieron las aserciones para verificar:
+
+- detención por falta de cantidad de niños en el caso multifamilia;
+- recomendación Saludable y detención segura por falta de precios en el segundo caso;
+- recomendación Básica y prioridad de bajo costo en el cumpleaños de mellizos.
+
+Cambio técnico: commit [356a9f7](https://github.com/danielalejandroosorio2026/funtastic-propuestas-agent-v0/commit/356a9f79cc4b50eba06f7cabb5c45bec4e59dc21).
+
+Resultado verificado: 8 tests aprobados en 0,25 segundos.
+
+## D13 — Reemplazar datos demostrativos por la propuesta comercial v3
+
+Se revisaron visualmente las siete páginas del PDF comercial aportado por el propietario. La fuente confirma tres opciones, 2 horas y media, 25 niños y 25 adultos incluidos, capacidad máxima de 100 personas, servicios, adicionales, reserva del 30%, cancelación y preguntas frecuentes.
+
+El PDF no contiene precios. Por esa razón:
+
+- se eliminaron todos los importes inventados;
+- se agregó `datos/servicios_paquetes.md`;
+- el cálculo devuelve `total_estimado: null` y `conceptos_pendientes`;
+- se agregó un control de capacidad máxima;
+- se actualizaron las tres corridas con condiciones reales;
+- se recalibraron las pruebas.
+
+Resultado verificado: 9 tests aprobados en 0,20 segundos.
+
+## D14 — Incorporar precios con vigencia y tipo de día
+
+El propietario aportó la lista de precios de diciembre de 2026. Se cargaron seis combinaciones verificadas: tres opciones por dos tipos de día. También se incorporaron las tarifas de niño adicional hasta 9 años, adulto adicional y hora adicional.
+
+Decisiones de control:
+
+- no extender estos valores a meses distintos de diciembre de 2026;
+- no mezclar los cupos de 25 niños y 25 adultos;
+- exigir la clasificación `Lun-Jue` o `Vie-Dom-Fer` antes de calcular;
+- tratar los feriados con la segunda tarifa;
+- aplicar para diciembre la reserva específica del 50%, dejando documentada la diferencia con el 30% de la propuesta general;
+- conservar como pendientes los adicionales que no tienen importe publicado.
+
+Se agregó una corrida determinística de prueba que calcula ARS 2.270.000 para una opción Completa de viernes a domingo/feriado con 38 niños y 40 adultos.
+
+Resultado verificado: 12 tests aprobados en 0,21 segundos.
