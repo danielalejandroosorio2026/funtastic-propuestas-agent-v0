@@ -1,0 +1,6 @@
+catalogo_validado,nombre,descripcion,precio_ars,restricciones
+false,Decoracion tematica,Ambientación básica sobre temática elegida,45000,Sujeta a validación de temática y disponibilidad
+false,Mesa dulce,Selección estándar para el evento,35000,Requiere confirmar alergias
+false,Animacion especial,Actividad coordinada adicional,50000,Sujeta a disponibilidad
+false,Fotografia,Cobertura fotográfica básica,60000,Sujeta a disponibilidad y consentimiento
+false,Catering adultos,Refuerzo de servicio para adultos,40000,Base demostrativa; confirmar cantidades

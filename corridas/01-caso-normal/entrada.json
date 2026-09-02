@@ -1,0 +1,19 @@
+{
+  "consulta_id": "DEMO-001",
+  "es_caso_real": false,
+  "adulto_responsable": "Persona A",
+  "whatsapp": "ANONIMIZADO",
+  "cumpleaniero": "Niña A",
+  "edad": 6,
+  "fecha_preferida": "2026-09-20",
+  "horario_preferido": "16:00",
+  "cantidad_ninos": 25,
+  "cantidad_adultos": 25,
+  "tematica": "Princesas",
+  "preferencia": "Resolver la mayor parte del evento",
+  "presupuesto_maximo_ars": null,
+  "adicionales_interes": [
+    "Decoracion tematica"
+  ],
+  "comentarios": "Sin observaciones"
+}

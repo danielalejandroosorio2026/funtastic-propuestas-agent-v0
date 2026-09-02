@@ -1,0 +1,17 @@
+{
+  "consulta_id": "DEMO-002",
+  "es_caso_real": false,
+  "adulto_responsable": "Persona B",
+  "whatsapp": "ANONIMIZADO",
+  "cumpleaniero": "Niño B",
+  "edad": 8,
+  "fecha_preferida": "2026-09-27",
+  "horario_preferido": "17:00",
+  "cantidad_ninos": 38,
+  "cantidad_adultos": 40,
+  "tematica": "Espacio",
+  "preferencia": "Opción económica",
+  "presupuesto_maximo_ars": 330000,
+  "adicionales_interes": [],
+  "comentarios": "Necesitamos entender el costo por invitados excedentes"
+}

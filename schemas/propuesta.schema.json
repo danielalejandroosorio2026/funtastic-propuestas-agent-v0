@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Propuesta Funtastic v2",
+  "type": "object",
+  "required": [
+    "estado",
+    "consulta_id",
+    "datos_faltantes",
+    "paquete_recomendado",
+    "cotizacion",
+    "alertas",
+    "mensaje_whatsapp",
+    "resumen_interno",
+    "requiere_revision_humana",
+    "motivos_revision"
+  ],
+  "properties": {
+    "estado": {
+      "enum": [
+        "BORRADOR",
+        "REQUIERE_DATOS",
+        "NO_COTIZABLE"
+      ]
+    },
+    "consulta_id": {
+      "type": "string"
+    },
+    "datos_faltantes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "paquete_recomendado": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "nombre": {
+          "type": "string"
+        },
+        "justificacion": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nombre",
+        "justificacion"
+      ]
+    },
+    "alternativa": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "cotizacion": {
+      "type": "object",
+      "required": [
+        "moneda",
+        "catalogo_validado",
+        "items",
+        "total_estimado"
+      ],
+      "properties": {
+        "moneda": {
+          "const": "ARS"
+        },
+        "catalogo_validado": {
+          "type": "boolean"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "concepto",
+              "cantidad",
+              "precio_unitario",
+              "subtotal",
+              "fuente"
+            ],
+            "properties": {
+              "concepto": {
+                "type": "string"
+              },
+              "cantidad": {
+                "type": "number"
+              },
+              "precio_unitario": {
+                "type": "number"
+              },
+              "subtotal": {
+                "type": "number"
+              },
+              "fuente": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "total_estimado": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "alertas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mensaje_whatsapp": {
+      "type": "string"
+    },
+    "resumen_interno": {
+      "type": "object"
+    },
+    "requiere_revision_humana": {
+      "const": true
+    },
+    "motivos_revision": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

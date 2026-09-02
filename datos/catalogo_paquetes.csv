@@ -1,0 +1,4 @@
+catalogo_validado,nombre,descripcion,duracion_horas,ninos_incluidos,adultos_incluidos,precio_base_ars,precio_nino_excedente_ars,precio_adulto_excedente_ars,recomendado_para,vigencia_desde,vigencia_hasta
+false,Basica,Propuesta esencial con uso del salón y servicio base,2,20,20,180000,6000,3000,Familias que priorizan simplicidad y presupuesto,2026-09-01,2026-09-30
+false,Completa,Propuesta integral con mayor capacidad y acompañamiento,2.5,30,30,260000,5500,2500,Familias que quieren resolver la mayor parte del evento,2026-09-01,2026-09-30
+false,Saludable,Propuesta con selección alimentaria orientada a opciones saludables,2.5,25,25,290000,6000,3000,Familias que priorizan una propuesta alimentaria saludable,2026-09-01,2026-09-30
