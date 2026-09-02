@@ -1,6 +1,7 @@
 {
   "estado": "BORRADOR",
   "consulta_id": "DEMO-002",
+  "confianza": 0.82,
   "datos_faltantes": [],
   "paquete_recomendado": {
     "nombre": "Completa",

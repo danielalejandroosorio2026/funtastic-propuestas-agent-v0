@@ -1,6 +1,7 @@
 {
   "estado": "REQUIERE_DATOS",
   "consulta_id": "DEMO-003",
+  "confianza": 0.98,
   "datos_faltantes": [
     "fecha_preferida"
   ],

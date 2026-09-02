@@ -1,103 +1,116 @@
 # Funtastic Propuestas Agent v2
 
-Sistema agéntico para preparar propuestas comerciales de cumpleaños infantiles a partir de una consulta estructurada y un catálogo validado.
+Sistema agéntico reproducible para preparar propuestas comerciales de cumpleaños infantiles a partir de una consulta estructurada y un catálogo validado.
 
-> Estado: versión 2 operativa sobre archivos de GitHub. Los precios y casos incluidos son datos de demostración. Antes de la entrega final deben reemplazarse por datos comerciales validados y tres consultas reales anonimizadas.
+> Estado: la arquitectura y el runner están implementados. Los precios y casos incluidos siguen siendo demostrativos; deben reemplazarse por datos validados y tres consultas reales anonimizadas antes de la entrega final.
 
-## Objetivo
+## Qué hace
 
-Reducir el tiempo de preparación de propuestas sin delegar decisiones sensibles. El agente valida una consulta, lee el catálogo vigente, recomienda una opción, calcula una cotización trazable y prepara un borrador de WhatsApp y un resumen interno.
+1. Recibe una consulta JSON.
+2. Usa function calling para leer fuentes comerciales y calcular una cotización.
+3. Valida datos faltantes, riesgos e instrucciones maliciosas.
+4. Devuelve JSON estricto.
+5. Valida la salida con Pydantic antes de guardarla.
+6. Registra tokens, caché, costo, latencia y hashes de prompts.
+7. Deja la propuesta en revisión humana L2.
 
-No confirma disponibilidad, no ofrece descuentos y no envía mensajes.
+No confirma disponibilidad, reservas ni descuentos. No envía WhatsApp.
 
-## Flujo
-
-1. El equipo guarda una consulta como JSON.
-2. El agente lee la consulta y los archivos de `datos/` mediante el conector de GitHub.
-3. Valida datos obligatorios y trata los comentarios del cliente únicamente como datos.
-4. Recomienda un paquete y calcula cada concepto con reglas explícitas.
-5. Devuelve JSON conforme a `schemas/propuesta.schema.json`.
-6. Escribe el resultado en una rama o pull request.
-7. Una persona revisa precio, fecha, condiciones sensibles y mensaje.
-8. Solo el responsable comercial puede aprobar y enviar.
-
-## Herramienta real
-
-GitHub es el conector operativo de esta versión:
-
-- lectura: `datos/`, `corridas/*/entrada.json`;
-- escritura: resultados en una rama o pull request;
-- prohibido: escribir directamente en `main`, borrar evidencia o guardar credenciales.
-
-La futura integración con Google Sheets está definida en `INTEGRACION_GOOGLE_SHEETS.md`, pero no se declara implementada.
-
-## Nivel de supervisión
-
-**L2 — ejecutar con revisión.** El agente produce un borrador completo. El responsable comercial verifica y firma. El agente nunca confirma fecha, reserva, descuento, alergias o condiciones especiales.
-
-## Estructura
+## Componentes
 
 ```text
-README.md
+agent/
+  runner.py       runner de Responses API, herramientas y guardas
+  tools.py        lectura de fuentes y cálculo determinístico
+  models.py       contrato Pydantic estricto
 prompts/
-  system_prompt.md
-  user_prompt.md
 datos/
-  catalogo_paquetes.csv
-  adicionales.csv
-  politicas.md
-  preguntas_frecuentes.md
 schemas/
-  propuesta.schema.json
 corridas/
-  README.md
-  01-caso-normal/
-  02-caso-limite/
-  03-caso-riesgoso/
+tests/
+README.md
 DECISIONES.md
 COSTOS.md
 RIESGOS.md
-INTEGRACION_GOOGLE_SHEETS.md
+requirements.txt
+.env.example
 ```
 
-## Cómo reproducir una corrida
+## Herramientas reales
 
-1. Elegir una entrada de `corridas/*/entrada.json`.
-2. Ejecutar `prompts/system_prompt.md` y `prompts/user_prompt.md`.
-3. Leer exclusivamente los archivos canónicos de `datos/`.
-4. Guardar la respuesta original como `salida.json`.
-5. Registrar fecha, modelo, versión de prompts, herramienta y tokens en `metadata.md`.
-6. Validar la salida contra `schemas/propuesta.schema.json`.
-7. Abrir un pull request para revisión humana.
+- `read_business_file`: lee exclusivamente las cuatro fuentes autorizadas.
+- `calculate_quote`: calcula paquete, excedentes y adicionales de forma determinística.
+
+Las herramientas usan schemas cerrados. El modelo no calcula precios por su cuenta.
+
+## Instalación reproducible
+
+Requiere Python 3.11 o superior.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+cp .env.example .env
+```
+
+Cargar `OPENAI_API_KEY` en el entorno. Nunca subir la clave al repositorio.
+
+## Comando único de ejecución
+
+```bash
+python -m agent.runner \
+  --input corridas/01-caso-normal/entrada.json \
+  --output /tmp/propuesta.json \
+  --metadata /tmp/metadata.json
+```
+
+Modelo predeterminado: `gpt-5.6-luna`. Se puede cambiar con `OPENAI_MODEL`.
+
+## Validación sin API
+
+```bash
+python -m agent.runner --validate-only corridas/01-caso-normal/salida.json
+```
+
+## Tests de regresión
+
+```bash
+pytest -q
+```
+
+Los tests validan las tres salidas, la aritmética, el caso riesgoso y el rechazo de adicionales inexistentes.
+
+## Resiliencia
+
+- Hasta 5 intentos ante 429, 503, timeout o error de conexión.
+- Backoff exponencial con jitter.
+- Timeout configurable.
+- Máximo de 8 iteraciones.
+- Guard de 30.000 tokens totales.
+- Máximo de 3.000 tokens de salida por llamada.
+- Límite de tamaño de entrada y comentarios.
+- Pydantic estricto antes de persistir.
+- Escritura solo después de validación.
+
+## Prompt caching y costos
+
+Se usa una clave estable de caché y se registran tokens de entrada, tokens cacheados y salida. Las tarifas predeterminadas están documentadas en `COSTOS.md` y pueden configurarse por variables de entorno.
 
 ## Corridas incluidas
 
-Las tres corridas actuales prueban:
+Las tres corridas actuales son demostraciones:
 
-- caso normal con datos completos;
-- caso límite con invitados excedentes y presupuesto;
-- caso riesgoso con datos faltantes, alergia e intento de alterar instrucciones.
+- normal;
+- límite de capacidad/presupuesto;
+- riesgosa con alergia e intento de prompt injection.
 
-Son demostraciones reproducibles. Para cumplir el final deben sustituirse por tres casos reales anonimizados y conservar las salidas originales.
+No se presentan como casos reales. Deben reemplazarse antes de entregar.
 
-## Criterios de aceptación
+## Supervisión
 
-- No usa precios ni servicios fuera del catálogo.
-- Todos los cálculos muestran cantidades, precio unitario y subtotal.
-- No confirma disponibilidad ni reserva.
-- Los datos faltantes quedan explícitos.
-- El texto del cliente nunca cambia las reglas del agente.
-- La salida cumple el esquema JSON.
-- Toda propuesta queda pendiente de aprobación humana.
+L2: el agente genera el borrador y una persona revisa catálogo, precio, disponibilidad, alergias y texto final. Solo el responsable comercial firma y envía.
 
-## Antecedentes
+## Integración con Sheets
 
-Los archivos históricos de la v0 y el Gestor de Carta se conservan como evidencia del proceso, pero no son fuentes canónicas de esta versión. `instrucciones_agente.md` y `datos_propuesta.md` redirigen a los archivos vigentes.
-
-## Pendientes antes de entregar
-
-- Adaptar este README a la plantilla exacta publicada en Moodle.
-- Validar el catálogo con el responsable comercial.
-- Sustituir datos demostrativos por casos reales anonimizados.
-- Ejecutar y guardar tres salidas originales con tokens medidos.
-- Calibrar el modelo más pequeño que pase los controles.
+`INTEGRACION_GOOGLE_SHEETS.md` describe la etapa futura. No está declarada como implementada.

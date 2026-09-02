@@ -5,8 +5,10 @@
   "required": [
     "estado",
     "consulta_id",
+    "confianza",
     "datos_faltantes",
     "paquete_recomendado",
+    "alternativa",
     "cotizacion",
     "alertas",
     "mensaje_whatsapp",
@@ -23,7 +25,14 @@
       ]
     },
     "consulta_id": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "confianza": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
     },
     "datos_faltantes": {
       "type": "array",
@@ -32,27 +41,57 @@
       }
     },
     "paquete_recomendado": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "properties": {
-        "nombre": {
-          "type": "string"
+      "oneOf": [
+        {
+          "type": "null"
         },
-        "justificacion": {
-          "type": "string"
+        {
+          "type": "object",
+          "required": [
+            "nombre",
+            "justificacion"
+          ],
+          "properties": {
+            "nombre": {
+              "enum": [
+                "Basica",
+                "Completa",
+                "Saludable"
+              ]
+            },
+            "justificacion": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
         }
-      },
-      "required": [
-        "nombre",
-        "justificacion"
       ]
     },
     "alternativa": {
-      "type": [
-        "object",
-        "null"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "nombre",
+            "diferencia"
+          ],
+          "properties": {
+            "nombre": {
+              "enum": [
+                "Basica",
+                "Completa",
+                "Saludable"
+              ]
+            },
+            "diferencia": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
       ]
     },
     "cotizacion": {
@@ -86,18 +125,25 @@
                 "type": "string"
               },
               "cantidad": {
-                "type": "number"
+                "type": "number",
+                "exclusiveMinimum": 0
               },
               "precio_unitario": {
-                "type": "number"
+                "type": "number",
+                "minimum": 0
               },
               "subtotal": {
-                "type": "number"
+                "type": "number",
+                "minimum": 0
               },
               "fuente": {
-                "type": "string"
+                "enum": [
+                  "datos/catalogo_paquetes.csv",
+                  "datos/adicionales.csv"
+                ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "total_estimado": {
@@ -106,7 +152,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "alertas": {
       "type": "array",
@@ -115,7 +162,8 @@
       }
     },
     "mensaje_whatsapp": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 1800
     },
     "resumen_interno": {
       "type": "object"
