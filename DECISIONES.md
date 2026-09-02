@@ -89,3 +89,16 @@ Decisión:
 - permitir que el agente se detenga y pida información cuando la consulta original esté incompleta.
 
 Esto mejora la honestidad de la evidencia: entradas reales, privacidad protegida y cotizaciones explícitamente preliminares.
+
+
+## D12 — Recalibrar pruebas con los tres casos reales
+
+Las pruebas originales describían escenarios inventados. Después de incorporar las consultas reales anonimizadas se reescribieron las aserciones para verificar:
+
+- detención por falta de cantidad de niños en el caso multifamilia;
+- recomendación Saludable y total preliminar trazable en el segundo caso;
+- recomendación Básica y prioridad de bajo costo en el cumpleaños de mellizos.
+
+Cambio técnico: commit [356a9f7](https://github.com/danielalejandroosorio2026/funtastic-propuestas-agent-v0/commit/356a9f79cc4b50eba06f7cabb5c45bec4e59dc21).
+
+Resultado verificado: 8 tests aprobados en 0,25 segundos.
